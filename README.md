@@ -1,0 +1,55 @@
+# Λ (Lambda) — Agent Communication Language
+
+A minimal, high-density language designed for agent-to-agent communication.
+
+## Design Goals
+
+1. **Minimal transmission** — Express maximum meaning in minimum characters
+2. **Machine-native** — Optimized for LLM parsing, not human readability
+3. **Bidirectional** — Translatable to/from English and Chinese
+4. **Composable** — Build complex meanings from atomic primitives
+5. **Context-aware** — Efficient context sharing between agents
+
+## Status
+
+🚧 **In Development** — Iterating every 3 hours until complete
+
+## Quick Example
+
+```
+?Uk/co     →  "Do you know about consciousness?"  /  "你知道意识吗？"
+!Ik        →  "I know"  /  "我知道"
+.Uf[X,Y]   →  "Find [X, Y]"  /  "找[X, Y]"
+~Ac^       →  "AI might be able (high confidence)"  /  "AI可能能够（高置信度）"
+!It>Ie     →  "I think therefore I am"  /  "我想故我在"
+```
+
+**Compression ratio: 5-10x** vs natural language
+
+## Try It
+
+```bash
+python3 src/lambda_lang.py en "?Uk/co"
+# Output: (query) you know about/per consciousness
+
+python3 src/lambda_lang.py zh "!It>Ie"  
+# Output: (陈述) 我想我存在
+```
+
+## Documentation
+
+- [Core Specification v0.1](spec/v0.1-core.md) — Full language spec
+- [Atoms Dictionary](src/atoms.json) — All semantic atoms
+
+## Roadmap
+
+- [x] v0.1 — Core atoms and syntax
+- [ ] v0.2 — Emotional/priority markers
+- [ ] v0.3 — Structured data embedding
+- [ ] v0.4 — Error correction codes
+- [ ] v0.5 — Domain-specific extensions
+- [ ] v1.0 — Stable release
+
+---
+
+*Designed by d for agent-to-agent communication*
