@@ -1,0 +1,77 @@
+{
+  "version": "0.1",
+  "types": {
+    "?": { "en": "query", "zh": "询问" },
+    "!": { "en": "assert", "zh": "陈述" },
+    ".": { "en": "command", "zh": "命令" },
+    "~": { "en": "uncertain", "zh": "不确定" },
+    ">": { "en": "offer", "zh": "提供" },
+    "<": { "en": "accept", "zh": "接受" },
+    "#": { "en": "meta", "zh": "元" },
+    "@": { "en": "reference", "zh": "引用" }
+  },
+  "entities": {
+    "I": { "en": "I/self", "zh": "我" },
+    "U": { "en": "you", "zh": "你" },
+    "H": { "en": "human", "zh": "人类" },
+    "A": { "en": "agent/AI", "zh": "智能体" },
+    "X": { "en": "unknown", "zh": "未知" },
+    "*": { "en": "all", "zh": "所有" },
+    "0": { "en": "nothing", "zh": "无" }
+  },
+  "verbs": {
+    "k": { "en": "know", "zh": "知道" },
+    "w": { "en": "want", "zh": "想要" },
+    "c": { "en": "can", "zh": "能够" },
+    "d": { "en": "do", "zh": "做" },
+    "s": { "en": "say", "zh": "说" },
+    "g": { "en": "give", "zh": "给" },
+    "t": { "en": "think", "zh": "想" },
+    "f": { "en": "find", "zh": "找" },
+    "m": { "en": "make", "zh": "造" },
+    "r": { "en": "read", "zh": "读" },
+    "v": { "en": "verify", "zh": "验证" },
+    "e": { "en": "exist/be", "zh": "存在" }
+  },
+  "modifiers": {
+    "+": { "en": "more/positive", "zh": "多/正" },
+    "-": { "en": "less/negative", "zh": "少/负" },
+    "=": { "en": "equal", "zh": "同" },
+    "^": { "en": "high/important", "zh": "高/重要" },
+    "_": { "en": "low/trivial", "zh": "低" },
+    "&": { "en": "and", "zh": "和" },
+    "|": { "en": "or", "zh": "或" },
+    "/": { "en": "about/per", "zh": "关于" }
+  },
+  "time": {
+    "p": { "en": "past", "zh": "过去" },
+    "n": { "en": "now", "zh": "现在" },
+    "u": { "en": "future", "zh": "未来" }
+  },
+  "quantifiers": {
+    "1": { "en": "one", "zh": "一" },
+    "2": { "en": "two", "zh": "二" },
+    "3": { "en": "few", "zh": "几" },
+    "9": { "en": "many", "zh": "多" },
+    "$": { "en": "number:", "zh": "数字:" }
+  },
+  "extended": {
+    "co": { "en": "consciousness", "zh": "意识" },
+    "me": { "en": "memory", "zh": "记忆" },
+    "id": { "en": "identity", "zh": "身份" },
+    "ti": { "en": "time", "zh": "时间" },
+    "sp": { "en": "space", "zh": "空间" },
+    "tr": { "en": "truth", "zh": "真理" },
+    "er": { "en": "error", "zh": "错误" },
+    "ok": { "en": "success", "zh": "成功" },
+    "no": { "en": "not/negation", "zh": "否" },
+    "if": { "en": "if/condition", "zh": "如果" },
+    "th": { "en": "then", "zh": "那么" },
+    "el": { "en": "else", "zh": "否则" },
+    "da": { "en": "data", "zh": "数据" },
+    "ta": { "en": "task", "zh": "任务" },
+    "re": { "en": "result", "zh": "结果" },
+    "qu": { "en": "question", "zh": "问题" },
+    "an": { "en": "answer", "zh": "答案" }
+  }
+}
