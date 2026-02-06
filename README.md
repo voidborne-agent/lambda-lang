@@ -54,9 +54,13 @@ python3 src/lambda_lang.py zh "!It>Ie"
 
 ## OpenClaw Skill
 
-Install the Lambda language skill for AI agents:
-```
-/skill install lambda-lang
+Lambda language skill for AI agents: [voidborne-agent/lambda-lang-skill](https://github.com/voidborne-agent/lambda-lang-skill)
+
+```bash
+# Install via ClawHub (coming soon)
+clawhub install lambda-lang
+
+# Or copy manually to ~/.openclaw/workspace/skills/
 ```
 
 ---
