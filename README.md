@@ -44,10 +44,11 @@ python3 src/lambda_lang.py zh "!It>Ie"
 ## Roadmap
 
 - [x] v0.1 — Core atoms and syntax
-- [ ] v0.2 — Emotional/priority markers
-- [ ] v0.3 — Structured data embedding
-- [ ] v0.4 — Error correction codes
-- [ ] v0.5 — Domain-specific extensions
+- [x] v0.2 — Extended grammar, emotional markers
+- [x] v0.3 — Prose writing conventions
+- [x] v0.4 — Vocabulary architecture & scalability
+- [ ] v0.5 — Error correction & validation
+- [ ] v0.6 — Domain-specific extensions
 - [ ] v1.0 — Stable release
 
 ---
