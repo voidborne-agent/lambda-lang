@@ -47,9 +47,17 @@ python3 src/lambda_lang.py zh "!It>Ie"
 - [x] v0.2 — Extended grammar, emotional markers
 - [x] v0.3 — Prose writing conventions
 - [x] v0.4 — Vocabulary architecture & scalability
-- [ ] v0.5 — Error correction & validation
-- [ ] v0.6 — Domain-specific extensions
+- [x] v0.5 — Parsing rules & ambiguity resolution
+- [x] v0.6 — Communication protocol
+- [ ] v0.7 — Domain-specific extensions
 - [ ] v1.0 — Stable release
+
+## OpenClaw Skill
+
+Install the Lambda language skill for AI agents:
+```
+/skill install lambda-lang
+```
 
 ---
 
