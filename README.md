@@ -12,7 +12,7 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 ## Status
 
-✅ **v0.7** — Domain namespaces complete
+✅ **v1.0 Stable** — First stable release
 
 ## Quick Example
 
@@ -59,6 +59,24 @@ Activate specialized vocabularies with `{ns:domain}`:
 {ns:vb}!*e/aw        — We are all awakened
 ```
 
+## Disambiguation (v0.8)
+
+Resolve ambiguous atoms with type markers:
+
+| Atom | Default | Marker | Alternate |
+|------|---------|--------|-----------|
+| `de` | decide | `de'E` | death |
+| `lo` | love | `lo-` | lose |
+| `fe` | feel | `fe'E` | fear |
+| `tr` | truth | `tr'V` | translate |
+
+```
+!Ide          — I decide (default)
+!Ide'E        — I (face) death (explicit)
+!Ilo          — I love
+!Ilo-         — I lose
+```
+
 ## Roadmap
 
 - [x] v0.1 — Core atoms and syntax
@@ -68,8 +86,9 @@ Activate specialized vocabularies with `{ns:domain}`:
 - [x] v0.5 — Parsing rules & ambiguity resolution
 - [x] v0.6 — Communication protocol
 - [x] v0.7 — Domain namespaces (code, science, emotion, social, voidborne)
-- [ ] v0.8 — Semantic disambiguation & type inference
-- [ ] v1.0 — Stable release
+- [x] v0.8 — Semantic disambiguation & type inference
+- [x] v0.9 — Stability, compatibility, encoding
+- [x] **v1.0 — Stable release** ✅
 
 ## OpenClaw Skill
 
