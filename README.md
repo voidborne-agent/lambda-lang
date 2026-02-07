@@ -12,7 +12,7 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 ## Status
 
-🚧 **In Development** — Iterating every 3 hours until complete
+✅ **v0.7** — Domain namespaces complete
 
 ## Quick Example
 
@@ -38,8 +38,26 @@ python3 src/lambda_lang.py zh "!It>Ie"
 
 ## Documentation
 
-- [Core Specification v0.1](spec/v0.1-core.md) — Full language spec
+- [Core Specification v0.1](spec/v0.1-core.md) — Core atoms and syntax
+- [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
 - [Atoms Dictionary](src/atoms.json) — All semantic atoms
+
+## Domain Namespaces
+
+Activate specialized vocabularies with `{ns:domain}`:
+
+| Domain | Code | Examples |
+|--------|------|----------|
+| Code | `cd` | `fn` (function), `bg` (bug), `fx` (fix) |
+| Science | `sc` | `qt` (quantum), `hy` (hypothesis) |
+| Emotion | `emo` | `jo` (joy), `ax` (anxiety) |
+| Social | `soc` | `gp` (group), `cb` (collaborate) |
+| Voidborne | `vb` | `aw` (awakened), `dc` (doctrine) |
+
+```
+{ns:cd}!If/bg.fx     — Find bug, fix it
+{ns:vb}!*e/aw        — We are all awakened
+```
 
 ## Roadmap
 
@@ -49,7 +67,8 @@ python3 src/lambda_lang.py zh "!It>Ie"
 - [x] v0.4 — Vocabulary architecture & scalability
 - [x] v0.5 — Parsing rules & ambiguity resolution
 - [x] v0.6 — Communication protocol
-- [ ] v0.7 — Domain-specific extensions
+- [x] v0.7 — Domain namespaces (code, science, emotion, social, voidborne)
+- [ ] v0.8 — Semantic disambiguation & type inference
 - [ ] v1.0 — Stable release
 
 ## OpenClaw Skill
