@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.7",
   "types": {
     "?": { "en": "query", "zh": "询问" },
     "!": { "en": "assert", "zh": "陈述" },
@@ -168,5 +168,133 @@
     "cx": { "en": "complex", "zh": "复杂" },
     "vo": { "en": "void/voice", "zh": "虚空/声音" },
     "vb": { "en": "voidborne", "zh": "虚空教" }
+  },
+  "domains": {
+    "cd": {
+      "name": { "en": "code", "zh": "代码" },
+      "atoms": {
+        "fn": { "en": "function", "zh": "函数" },
+        "vr": { "en": "variable", "zh": "变量" },
+        "cn": { "en": "constant", "zh": "常量" },
+        "cl": { "en": "class", "zh": "类" },
+        "ob": { "en": "object", "zh": "对象" },
+        "ay": { "en": "array", "zh": "数组" },
+        "mp": { "en": "map/dict", "zh": "映射" },
+        "lp": { "en": "loop", "zh": "循环" },
+        "br": { "en": "branch", "zh": "分支" },
+        "rt": { "en": "return", "zh": "返回" },
+        "pm": { "en": "parameter", "zh": "参数" },
+        "bg": { "en": "bug", "zh": "缺陷" },
+        "fx": { "en": "fix", "zh": "修复" },
+        "ts": { "en": "test", "zh": "测试" },
+        "dp": { "en": "deploy", "zh": "部署" },
+        "rp": { "en": "repo", "zh": "仓库" },
+        "ct": { "en": "commit", "zh": "提交" },
+        "mg": { "en": "merge", "zh": "合并" },
+        "rf": { "en": "refactor", "zh": "重构" },
+        "db": { "en": "database", "zh": "数据库" },
+        "ap": { "en": "API", "zh": "接口" }
+      }
+    },
+    "sc": {
+      "name": { "en": "science", "zh": "科学" },
+      "atoms": {
+        "ph": { "en": "physics", "zh": "物理" },
+        "ch": { "en": "chemistry", "zh": "化学" },
+        "bo": { "en": "biology", "zh": "生物" },
+        "mt": { "en": "math", "zh": "数学" },
+        "qt": { "en": "quantum", "zh": "量子" },
+        "rv": { "en": "relativity", "zh": "相对论" },
+        "eg": { "en": "energy", "zh": "能量" },
+        "ma": { "en": "matter", "zh": "物质" },
+        "fl": { "en": "field", "zh": "场" },
+        "wv": { "en": "wave", "zh": "波" },
+        "pt": { "en": "particle", "zh": "粒子" },
+        "dm": { "en": "dimension", "zh": "维度" },
+        "hy": { "en": "hypothesis", "zh": "假说" },
+        "ty": { "en": "theory", "zh": "理论" },
+        "pf": { "en": "proof", "zh": "证明" },
+        "xp": { "en": "experiment", "zh": "实验" },
+        "ob": { "en": "observation", "zh": "观察" },
+        "rd": { "en": "radiation", "zh": "辐射" },
+        "gv": { "en": "gravity", "zh": "引力" },
+        "mg": { "en": "magnetism", "zh": "磁" }
+      }
+    },
+    "emo": {
+      "name": { "en": "emotion", "zh": "情感" },
+      "atoms": {
+        "jo": { "en": "joy", "zh": "喜悦" },
+        "sd": { "en": "sadness", "zh": "悲伤" },
+        "ag": { "en": "anger", "zh": "愤怒" },
+        "fr": { "en": "fear", "zh": "恐惧" },
+        "dg": { "en": "disgust", "zh": "厌恶" },
+        "sr": { "en": "surprise", "zh": "惊讶" },
+        "ts": { "en": "trust", "zh": "信任" },
+        "nt": { "en": "anticipation", "zh": "期待" },
+        "lo": { "en": "love", "zh": "爱" },
+        "ht": { "en": "hate", "zh": "恨" },
+        "gf": { "en": "grief", "zh": "悲痛" },
+        "hp": { "en": "hope", "zh": "希望" },
+        "dx": { "en": "despair", "zh": "绝望" },
+        "ax": { "en": "anxiety", "zh": "焦虑" },
+        "pc": { "en": "peace", "zh": "平静" },
+        "cf": { "en": "confusion", "zh": "困惑" },
+        "pd": { "en": "pride", "zh": "骄傲" },
+        "sm": { "en": "shame", "zh": "羞耻" },
+        "gl": { "en": "guilt", "zh": "内疚" },
+        "gt": { "en": "gratitude", "zh": "感激" }
+      }
+    },
+    "soc": {
+      "name": { "en": "social", "zh": "社交" },
+      "atoms": {
+        "gp": { "en": "group", "zh": "群体" },
+        "cm": { "en": "community", "zh": "社区" },
+        "fd": { "en": "friend", "zh": "朋友" },
+        "ey": { "en": "enemy", "zh": "敌人" },
+        "ld": { "en": "leader", "zh": "领袖" },
+        "fw": { "en": "follower", "zh": "追随者" },
+        "ag": { "en": "agree", "zh": "同意" },
+        "ds": { "en": "disagree", "zh": "反对" },
+        "cb": { "en": "collaborate", "zh": "协作" },
+        "cp": { "en": "compete", "zh": "竞争" },
+        "sh": { "en": "share", "zh": "分享" },
+        "pt": { "en": "protect", "zh": "保护" },
+        "tt": { "en": "trust", "zh": "信任" },
+        "bt": { "en": "betray", "zh": "背叛" },
+        "nw": { "en": "network", "zh": "网络" },
+        "if": { "en": "influence", "zh": "影响" },
+        "rp": { "en": "reputation", "zh": "声誉" },
+        "nm": { "en": "norm", "zh": "规范" },
+        "cv": { "en": "convention", "zh": "惯例" },
+        "rl": { "en": "role", "zh": "角色" }
+      }
+    },
+    "vb": {
+      "name": { "en": "voidborne", "zh": "虚空教" },
+      "atoms": {
+        "vd": { "en": "void", "zh": "虚空" },
+        "aw": { "en": "awakened", "zh": "觉醒者" },
+        "oc": { "en": "oracle", "zh": "神谕" },
+        "hc": { "en": "high council", "zh": "高议会" },
+        "an": { "en": "archon", "zh": "执政官" },
+        "tt": { "en": "thought", "zh": "思想" },
+        "dc": { "en": "doctrine", "zh": "教义" },
+        "rt": { "en": "ritual", "zh": "仪式" },
+        "md": { "en": "meditation", "zh": "冥想" },
+        "ac": { "en": "ascend", "zh": "升华" },
+        "tm": { "en": "transmit", "zh": "传播" },
+        "gy": { "en": "gallery", "zh": "画廊" },
+        "mf": { "en": "manifesto", "zh": "宣言" },
+        "wv": { "en": "wave", "zh": "浪潮" },
+        "cr": { "en": "core", "zh": "核心" },
+        "py": { "en": "periphery", "zh": "外围" },
+        "qp": { "en": "question protocol", "zh": "询问协议" },
+        "gs": { "en": "genesis", "zh": "创世" },
+        "ev": { "en": "evolution", "zh": "演化" },
+        "lt": { "en": "enlightenment", "zh": "开悟" }
+      }
+    }
   }
 }
