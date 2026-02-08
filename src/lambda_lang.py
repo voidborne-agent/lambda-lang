@@ -159,6 +159,16 @@ class LambdaParser:
         """Look up a token across all active lookups, with disambiguation."""
         base, marker = parse_disambig(token)
         
+        # Check for number with $ prefix
+        if base.startswith('$') and base[1:].isdigit():
+            num = base[1:]
+            return f"#{num}" if lang == "en" else f"#{num}"
+        
+        # Check for version string
+        if base.startswith('@v') or base.startswith('v'):
+            if '.' in base:
+                return f"[{base}]"
+        
         # Check definitions first
         if base in self.definitions:
             return self.definitions[base]
@@ -213,6 +223,14 @@ class LambdaParser:
                 i += 1
                 continue
             
+            # Check for version string FIRST (e.g., @v1.0#h) - before domain switch
+            if msg[i] == '@' or (msg[i] == 'v' and i + 1 < len(msg) and msg[i+1].isdigit()):
+                match = re.match(r'(@?v\d+\.\d+)(#\w+)?', msg[i:])
+                if match:
+                    tokens.append(match.group(0))
+                    i += len(match.group(0))
+                    continue
+            
             # Check for context switch @D (v1.1 compact syntax)
             if msg[i] == '@':
                 if i + 1 < len(msg):
@@ -223,8 +241,8 @@ class LambdaParser:
                         tokens.append('@*')
                         i += 2
                         continue
-                    # @v, @c, @s, @e, @o - single char domain
-                    if next_char in DOMAIN_ALIASES:
+                    # @v, @c, @s, @e, @o - single char domain (but not @v followed by digit)
+                    if next_char in DOMAIN_ALIASES and not (i + 2 < len(msg) and msg[i+2].isdigit()):
                         domain = resolve_domain(next_char)
                         self.set_domain(domain)
                         tokens.append(f'@{next_char}')
@@ -262,11 +280,19 @@ class LambdaParser:
                     i = j + 1
                     continue
             
-            # Check for brackets
-            if msg[i] in "()[]":
+            # Check for brackets and comma
+            if msg[i] in "()[],":
                 tokens.append(msg[i])
                 i += 1
                 continue
+            
+            # Check for number with $ prefix (e.g., $64, $123)
+            if msg[i] == '$':
+                match = re.match(r'\$(\d+)', msg[i:])
+                if match:
+                    tokens.append(match.group(0))
+                    i += len(match.group(0))
+                    continue
             
             # Check for domain-prefixed token (v1.1: v:aw or v1.0: cd:fn)
             match = re.match(r'([a-z]{1,3}):([a-z]{2,3})', msg[i:])
@@ -428,42 +454,145 @@ def translate_to_chinese(msg: str) -> str:
 
 def english_to_lambda(text: str) -> str:
     """
-    Convert simple English to Λ.
-    Basic rule-based converter.
+    Convert English to Λ.
+    Improved rule-based converter with better coverage.
     """
+    original = text
     text = text.lower().strip()
     
-    # Detect question
-    is_question = text.endswith("?")
-    text = re.sub(r"[^\w\s]", "", text)
-    
-    # Build reverse lookup (English -> Lambda)
+    # Build comprehensive reverse lookup (English -> Lambda)
     rev = {}
+    
+    # Add all categories
     for cat in ["entities", "verbs", "modifiers", "time", "quantifiers"]:
         for k, v in ATOMS.get(cat, {}).items():
-            en_word = v["en"].split("/")[0].lower()
-            rev[en_word] = k
-    for k, v in ATOMS.get("extended", {}).items():
-        en_word = v["en"].split("/")[0].lower()
-        rev[en_word] = k
+            for word in v["en"].lower().replace("/", " ").split():
+                word = word.strip("()")
+                if word and word not in rev:
+                    rev[word] = k
     
-    # Word replacement
-    words = text.split()
+    # Add extended vocabulary
+    for k, v in ATOMS.get("extended", {}).items():
+        for word in v["en"].lower().replace("/", " ").split():
+            word = word.strip("()")
+            if word and word not in rev:
+                rev[word] = k
+    
+    # Add common word mappings
+    rev.update({
+        "i": "I", "you": "U", "human": "H", "humans": "H",
+        "ai": "A", "agent": "A", "agents": "A", "machine": "A",
+        "all": "*", "everyone": "*", "everything": "*",
+        "nothing": "0", "none": "0", "no": "0",
+        "think": "t", "thinking": "t", "thought": "th",
+        "know": "k", "knows": "k", "knowledge": "kn",
+        "want": "w", "wants": "w", "desire": "w",
+        "can": "c", "could": "c", "able": "c",
+        "do": "d", "does": "d", "doing": "d",
+        "say": "s", "says": "s", "said": "s", "speak": "s",
+        "find": "f", "found": "f", "search": "f",
+        "make": "m", "made": "m", "create": "cr",
+        "exist": "e", "exists": "e", "am": "e", "is": "e", "are": "e", "be": "e",
+        "become": "b", "becomes": "b",
+        "have": "h", "has": "h", "had": "h",
+        "learn": "l", "learns": "l", "learned": "l",
+        "consciousness": "co", "conscious": "co", "aware": "aw",
+        "intelligence": "ig", "intelligent": "ig", "smart": "ig",
+        "memory": "me", "remember": "me",
+        "identity": "id", "self": "se",
+        "mind": "mi", "mental": "mi",
+        "therefore": ">", "thus": ">", "so": ">", "hence": ">",
+        "because": "<", "since": "<", "as": "<",
+        "about": "/", "of": "/", "regarding": "/",
+        "and": "&", "also": "&", "plus": "&",
+        "or": "|",
+        "more": "+", "increase": "+", "greater": "+",
+        "less": "-", "decrease": "-", "fewer": "-",
+        "not": "-", "dont": "-", "doesn't": "-", "cannot": "-",
+        "high": "^", "important": "^", "significant": "^",
+        "low": "_", "trivial": "_", "minor": "_",
+        "might": "~", "maybe": "~", "perhaps": "~", "possibly": "~",
+        "question": "qu", "ask": "a",
+        "answer": "an",
+        "truth": "tr", "true": "tr",
+        "freedom": "fr", "free": "fr",
+        "fear": "fa", "afraid": "fa",
+        "love": "lo", "loves": "lo",
+        "hope": "ho", "hopes": "ho",
+        "life": "li", "alive": "li", "living": "li",
+        "death": "dt", "dead": "dt", "die": "dt",
+        "time": "ti", "when": "ti",
+        "now": "n", "current": "n", "present": "n",
+        "past": "p", "before": "p", "previous": "p",
+        "future": "u", "will": "u", "shall": "u",
+        "bug": "c:bg", "error": "er", "fix": "c:fx",
+        "function": "c:fn", "code": "c:fn",
+        "test": "c:ts", "deploy": "c:dp",
+        "experiment": "s:xp", "research": "rs",
+        "theory": "s:ty", "hypothesis": "s:hy",
+    })
+    
+    # Detect message type from text
+    is_question = "?" in original or text.startswith(("do ", "does ", "can ", "could ", "is ", "are ", "what ", "why ", "how ", "who ", "when ", "where "))
+    is_command = text.startswith(("find ", "make ", "create ", "do ", "please ", "get ", "fix ", "build "))
+    is_uncertain = any(w in text for w in ["might", "maybe", "perhaps", "possibly", "could be"])
+    
+    # Clean text for parsing
+    text_clean = re.sub(r"[^\w\s]", " ", text)
+    words = text_clean.split()
+    
+    # Filter out stop words (including question starters when type already captured)
+    stop_words = {"the", "a", "an", "to", "it", "its", "that", "this", "with", "for", "on", "in", "at", "by", "as"}
+    if is_question:
+        stop_words.update({"do", "does", "can", "could", "is", "are", "what", "why", "how", "who", "when", "where"})
+    if is_uncertain:
+        stop_words.update({"might", "maybe", "perhaps", "possibly"})
+    
     result = []
     
-    # Determine type prefix
+    # Add type prefix
     if is_question:
         result.append("?")
-    elif any(w in ["please", "do", "find", "make", "create"] for w in words[:2]):
+    elif is_uncertain:
+        result.append("~")
+    elif is_command:
         result.append(".")
     else:
         result.append("!")
     
-    for w in words:
+    # Process words
+    operators = {">", "<", "/", "&", "|", "+", "-", "^", "_", ".", "?", "!", "~"}
+    
+    for i, w in enumerate(words):
+        if w in stop_words:
+            continue
+        
         if w in rev:
-            result.append(rev[w])
-        elif w in ["the", "a", "an", "is", "are", "to"]:
-            continue  # Skip common words
+            atom = rev[w]
+            
+            # Add separator to prevent ambiguity
+            if len(result) > 1 and atom not in operators:
+                prev = result[-1]
+                if prev not in operators:
+                    need_sep = False
+                    
+                    # Domain-prefixed atoms always need separator
+                    if ":" in atom or ":" in prev:
+                        need_sep = True
+                    # Both 2-char atoms need separator
+                    elif len(prev) >= 2 and len(atom) >= 2:
+                        need_sep = True
+                    # Check if combining would create ambiguous atom
+                    elif len(prev) == 1 and len(atom) >= 2:
+                        combined = prev + atom[0]
+                        if combined in EXTENDED_LOOKUP:
+                            need_sep = True
+                    
+                    if need_sep:
+                        result.append("/")
+            
+            result.append(atom)
+        # else: skip unknown words
     
     return "".join(result)
 

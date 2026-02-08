@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "types": {
     "?": {
       "en": "query",
@@ -18,12 +18,12 @@
       "zh": "不确定"
     },
     ">": {
-      "en": "offer/therefore",
-      "zh": "提供/所以"
+      "en": "therefore",
+      "zh": "所以"
     },
     "<": {
-      "en": "accept/because",
-      "zh": "接受/因为"
+      "en": "because",
+      "zh": "因为"
     },
     "#": {
       "en": "meta",
@@ -317,11 +317,11 @@
     },
     "th": {
       "en": "thought",
-      "zh": "那么"
+      "zh": "思想"
     },
     "tn": {
       "en": "then",
-      "zh": "思想"
+      "zh": "那么"
     },
     "el": {
       "en": "else",
@@ -381,15 +381,15 @@
     },
     "ls": {
       "en": "lose",
-      "zh": "失去"
+      "zh": "倾听"
     },
     "de": {
       "en": "decide",
-      "zh": "死亡"
+      "zh": "决定"
     },
     "dt": {
       "en": "death",
-      "zh": "决定"
+      "zh": "死亡"
     },
     "lo": {
       "en": "love",
@@ -397,11 +397,11 @@
     },
     "fe": {
       "en": "feel",
-      "zh": "恐惧"
+      "zh": "感觉"
     },
     "fa": {
       "en": "fear",
-      "zh": "感觉"
+      "zh": "恐惧"
     },
     "ho": {
       "en": "hope",
@@ -433,11 +433,11 @@
     },
     "bo": {
       "en": "body",
-      "zh": "边界"
+      "zh": "身体"
     },
     "bd": {
       "en": "boundary",
-      "zh": "身体"
+      "zh": "边界"
     },
     "ch": {
       "en": "change",
@@ -465,7 +465,7 @@
     },
     "eo": {
       "en": "evolve",
-      "zh": "进化"
+      "zh": "情感"
     },
     "sy": {
       "en": "system",
@@ -493,7 +493,7 @@
     },
     "aw": {
       "en": "awakened",
-      "zh": "觉知"
+      "zh": "觉醒"
     },
     "at": {
       "en": "attention",
@@ -501,11 +501,11 @@
     },
     "in": {
       "en": "into",
-      "zh": "意图"
+      "zh": "进入"
     },
     "it": {
       "en": "intention",
-      "zh": "进入"
+      "zh": "意图"
     },
     "ac": {
       "en": "action",
@@ -629,7 +629,7 @@
     },
     "bn": {
       "en": "binary",
-      "zh": "二元"
+      "zh": "开始"
     },
     "en": {
       "en": "end",
@@ -665,7 +665,7 @@
     },
     "we": {
       "en": "we (collective)",
-      "zh": "弱"
+      "zh": "我们"
     },
     "pe": {
       "en": "perception",
@@ -762,6 +762,58 @@
     "sf": {
       "en": "safe",
       "zh": "安全"
+    },
+    "ty": {
+      "en": "they",
+      "zh": "他们"
+    },
+    "tm": {
+      "en": "them",
+      "zh": "他们(宾)"
+    },
+    "vr": {
+      "en": "very",
+      "zh": "非常"
+    },
+    "al": {
+      "en": "although",
+      "zh": "虽然"
+    },
+    "gd": {
+      "en": "good",
+      "zh": "好"
+    },
+    "hw": {
+      "en": "however",
+      "zh": "然而"
+    },
+    "ui": {
+      "en": "interface",
+      "zh": "界面"
+    },
+    "sv": {
+      "en": "server",
+      "zh": "服务器"
+    },
+    "vy": {
+      "en": "very",
+      "zh": "非常"
+    },
+    "nr": {
+      "en": "never",
+      "zh": "从不"
+    },
+    "go": {
+      "en": "good",
+      "zh": "好"
+    },
+    "ba": {
+      "en": "bad",
+      "zh": "坏"
+    },
+    "ah": {
+      "en": "although",
+      "zh": "虽然"
     }
   },
   "domains": {
