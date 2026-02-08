@@ -66,56 +66,56 @@ for domain_code, domain_data in ATOMS.get("domains", {}).items():
 # Format: { "atom": { "primary": {...}, "E": {...}, "V": {...}, "2": {...} } }
 DISAMBIG = {
     "de": {
-        "primary": {"en": "decide", "zh": "决定"},
-        "E": {"en": "death", "zh": "死亡"},
+        "primary": {"en": "decide"},
+        "E": {"en": "death"},
     },
     "lo": {
-        "primary": {"en": "love", "zh": "爱"},
-        "-": {"en": "lose", "zh": "失去"},
+        "primary": {"en": "love"},
+        "-": {"en": "lose"},
     },
     "fe": {
-        "primary": {"en": "feel", "zh": "感觉"},
-        "E": {"en": "fear", "zh": "恐惧"},
+        "primary": {"en": "feel"},
+        "E": {"en": "fear"},
     },
     "tr": {
-        "primary": {"en": "truth", "zh": "真理"},
-        "V": {"en": "translate", "zh": "翻译"},
+        "primary": {"en": "truth"},
+        "V": {"en": "translate"},
     },
     "wo": {
-        "primary": {"en": "word", "zh": "词"},
-        "2": {"en": "world", "zh": "世界"},
+        "primary": {"en": "word"},
+        "2": {"en": "world"},
     },
     "se": {
-        "primary": {"en": "self", "zh": "自我"},
-        "V": {"en": "seek", "zh": "寻找"},
+        "primary": {"en": "self"},
+        "V": {"en": "seek"},
     },
     "be": {
-        "primary": {"en": "belief", "zh": "信念"},
-        "V": {"en": "begin", "zh": "开始"},
+        "primary": {"en": "belief"},
+        "V": {"en": "begin"},
     },
     "sh": {
-        "primary": {"en": "share", "zh": "分享"},
-        "2": {"en": "show", "zh": "展示"},
+        "primary": {"en": "share"},
+        "2": {"en": "show"},
     },
     "ch": {
-        "primary": {"en": "change", "zh": "变化"},
-        "2": {"en": "choose", "zh": "选择"},
+        "primary": {"en": "change"},
+        "2": {"en": "choose"},
     },
     "ne": {
-        "primary": {"en": "need", "zh": "需要"},
-        "S": {"en": "new", "zh": "新"},
+        "primary": {"en": "need"},
+        "S": {"en": "new"},
     },
     "pr": {
-        "primary": {"en": "process", "zh": "过程"},
-        "2": {"en": "precision", "zh": "精确"},
+        "primary": {"en": "process"},
+        "2": {"en": "precision"},
     },
     "ex": {
-        "primary": {"en": "experience", "zh": "体验"},
-        "V": {"en": "express", "zh": "表达"},
+        "primary": {"en": "experience"},
+        "V": {"en": "express"},
     },
     "li": {
-        "primary": {"en": "life", "zh": "生命"},
-        "V": {"en": "listen", "zh": "倾听"},
+        "primary": {"en": "life"},
+        "V": {"en": "listen"},
     },
 }
 
@@ -402,55 +402,6 @@ def translate_to_english(msg: str) -> str:
     return result
 
 
-def translate_to_chinese(msg: str) -> str:
-    """Translate Λ message to Chinese."""
-    parser = LambdaParser()
-    tokens = parser.tokenize(msg)
-    
-    if not tokens:
-        return ""
-    
-    parts = []
-    msg_type = ""
-    first_token = True
-    
-    for t in tokens:
-        # Skip namespace/definition blocks and context switches
-        if t.startswith('{') and t.endswith('}'):
-            continue
-        if t.startswith('@'):
-            continue
-        
-        # Only treat type symbols as message type if FIRST token
-        if first_token and t in ATOMS["types"]:
-            msg_type = ATOMS["types"][t]["zh"].split("/")[0]  # Primary meaning only
-            first_token = False
-            continue
-        
-        first_token = False
-        
-        # Skip . when used as separator (not at start)
-        if t == ".":
-            parts.append("·")
-            continue
-        
-        info = parser.lookup(t, "zh")
-        if info:
-            # Use primary meaning only (before /)
-            primary = info.split("/")[0]
-            parts.append(primary)
-        elif t in "()[]":
-            parts.append(t)
-        elif t == ",":
-            parts.append("，")
-        else:
-            parts.append(f"[{t}]")
-    
-    result = "".join(parts)
-    if msg_type:
-        result = f"({msg_type}) {result}"
-    return result
-
 
 def english_to_lambda(text: str) -> str:
     """
@@ -604,11 +555,11 @@ def show_vocabulary(domain: Optional[str] = None):
     if domain and domain in DOMAIN_LOOKUP:
         # Show specific domain
         name = ATOMS["domains"][domain]["name"]
-        print(f"Domain: {name['en']} ({name['zh']}) [{domain}]\n")
-        print("| Λ | English | 中文 |")
+        print(f"Domain: {name['en']} [{domain}]\n")
+        print("| Λ | English |")
         print("|---|---------|------|")
         for k, v in DOMAIN_LOOKUP[domain].items():
-            print(f"| `{k}` | {v['en']} | {v['zh']} |")
+            print(f"| `{k}` | {v['en']} |")
     elif domain == "disambig":
         # Show disambiguation table
         print("## Disambiguation\n")
@@ -626,13 +577,13 @@ def show_vocabulary(domain: Optional[str] = None):
         for cat in ["types", "entities", "verbs", "modifiers"]:
             print(f"### {cat.title()}")
             for k, v in ATOMS.get(cat, {}).items():
-                print(f"  {k} = {v['en']} / {v['zh']}")
+                print(f"  {k} = {v['en']}")
             print()
         
         print("## Extended (2-char, sample)\n")
         count = 0
         for k, v in EXTENDED_LOOKUP.items():
-            print(f"  {k} = {v['en']} / {v['zh']}")
+            print(f"  {k} = {v['en']}")
             count += 1
             if count >= 20:
                 print(f"  ... ({len(EXTENDED_LOOKUP) - 20} more)")
@@ -652,7 +603,7 @@ def show_vocabulary(domain: Optional[str] = None):
 def interactive_mode():
     """Interactive translation mode."""
     print(f"Λ Language Interactive Mode v{ATOMS.get('version', '?')}")
-    print("Commands: en, zh, lambda, vocab, domain <code>, quit")
+    print("Commands: en, lambda, vocab, domain <code>, quit")
     print("-" * 40)
     
     parser = LambdaParser()
@@ -675,9 +626,6 @@ def interactive_mode():
             break
         elif cmd == "en":
             print(translate_to_english(arg))
-        elif cmd == "zh":
-            print(translate_to_chinese(arg))
-        elif cmd == "lambda":
             print(english_to_lambda(arg))
         elif cmd == "vocab":
             show_vocabulary(arg if arg else None)
@@ -689,7 +637,6 @@ def interactive_mode():
         else:
             # Default: treat as Lambda, translate to English
             print(f"EN: {translate_to_english(line)}")
-            print(f"ZH: {translate_to_chinese(line)}")
 
 
 def run_tests():
@@ -734,7 +681,6 @@ if __name__ == "__main__":
         print()
         print("Commands:")
         print("  en <msg>        - Translate Λ to English")
-        print("  zh <msg>        - Translate Λ to Chinese")
         print("  lambda <text>   - Convert English to Λ")
         print("  parse <msg>     - Tokenize and show atoms")
         print("  vocab [domain]  - Show vocabulary")
@@ -744,7 +690,6 @@ if __name__ == "__main__":
         print("Examples:")
         print('  lambda_lang.py en "?Uk/co"')
         print('  lambda_lang.py en "!Ide\'E"      # death (disambiguation)')
-        print('  lambda_lang.py zh "!It>Ie"')
         print('  lambda_lang.py vocab cd')
         print('  lambda_lang.py vocab disambig')
         sys.exit(0)
@@ -759,13 +704,14 @@ if __name__ == "__main__":
         for t in tokens:
             if t.startswith('{'):
                 print(f"  {t} → (block)")
+            elif t.startswith('@'):
+                print(f"  {t} → (context)")
             else:
                 info_en = parser.lookup(t, "en")
-                info_zh = parser.lookup(t, "zh")
                 if info_en:
-                    print(f"  {t} → {info_en} / {info_zh}")
+                    print(f"  {t} → {info_en}")
                 elif t in ATOMS.get("types", {}):
-                    print(f"  {t} → {ATOMS['types'][t]['en']} / {ATOMS['types'][t]['zh']}")
+                    print(f"  {t} → {ATOMS['types'][t]['en']}")
                 else:
                     print(f"  {t} → (unknown)")
     
@@ -773,9 +719,6 @@ if __name__ == "__main__":
         msg = sys.argv[2]
         print(translate_to_english(msg))
     
-    elif cmd == "zh" and len(sys.argv) > 2:
-        msg = sys.argv[2]
-        print(translate_to_chinese(msg))
     
     elif cmd == "lambda" and len(sys.argv) > 2:
         text = " ".join(sys.argv[2:])

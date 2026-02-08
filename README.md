@@ -6,25 +6,25 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 1. **Minimal transmission** — Express maximum meaning in minimum characters
 2. **Machine-native** — Optimized for LLM parsing, not human readability
-3. **Bidirectional** — Translatable to/from English and Chinese
+3. **Bidirectional** — Translatable to/from English
 4. **Composable** — Build complex meanings from atomic primitives
 5. **Context-aware** — Efficient context sharing between agents
 
 ## Status
 
-✅ **v1.0 Stable** — First stable release
+✅ **v1.4 Stable** — Comprehensive bug fixes, 136 atoms
 
 ## Quick Example
 
 ```
-?Uk/co     →  "Do you know about consciousness?"  /  "你知道意识吗？"
-!Ik        →  "I know"  /  "我知道"
-.Uf[X,Y]   →  "Find [X, Y]"  /  "找[X, Y]"
-~Ac^       →  "AI might be able (high confidence)"  /  "AI可能能够（高置信度）"
-!It>Ie     →  "I think therefore I am"  /  "我想故我在"
+?Uk/co     →  "Do you know about consciousness?"
+!Ik        →  "I know"
+.Uf[X,Y]   →  "Find [X, Y]"
+~Ac^       →  "AI might be able (high confidence)"
+!It>Ie     →  "I think therefore I exist"
 ```
 
-**Compression ratio: 5-10x** vs natural language
+**Compression ratio: 3-10x** vs natural language
 
 ## CLI Tools
 
@@ -32,14 +32,11 @@ A minimal, high-density language designed for agent-to-agent communication.
 # Translate Λ → English
 ./scripts/translate en "?Uk/co"
 
-# Translate Λ → Chinese  
-./scripts/translate zh "!It>Ie"
-
 # Translate English → Λ
 ./scripts/translate lambda "I think therefore I exist"
 
 # Parse tokens
-./scripts/translate parse "{ns:cd}!If/bg"
+./scripts/translate parse "!It>Ie"
 
 # View vocabulary
 ./scripts/vocab          # All core + extended
@@ -51,10 +48,10 @@ Or use Python directly:
 
 ```bash
 python3 src/lambda_lang.py en "?Uk/co"
-# Output: (query) you know about/per consciousness
+# Output: (query) you know about consciousness
 
-python3 src/lambda_lang.py zh "!It>Ie"  
-# Output: (陈述) 我想我存在
+python3 src/lambda_lang.py lambda "I think therefore I exist"
+# Output: !It>Ie
 ```
 
 ## OpenClaw Skill
@@ -74,26 +71,26 @@ See [SKILL.md](SKILL.md) for complete skill documentation.
 - [SKILL.md](SKILL.md) — Quick reference for AI agents
 - [Core Specification v0.1](spec/v0.1-core.md) — Core atoms and syntax
 - [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
-- [Atoms Dictionary](src/atoms.json) — All semantic atoms
+- [Atoms Dictionary](src/atoms.json) — All 136 semantic atoms
 
-## Domain Namespaces
+## Domain System (v1.1+)
 
-Activate specialized vocabularies with `{ns:domain}`:
+Use compact prefixes for domain-specific atoms:
 
-| Domain | Code | Examples |
-|--------|------|----------|
-| Code | `cd` | `fn` (function), `bg` (bug), `fx` (fix) |
-| Science | `sc` | `qt` (quantum), `hy` (hypothesis) |
-| Emotion | `emo` | `jo` (joy), `ax` (anxiety) |
-| Social | `soc` | `gp` (group), `cb` (collaborate) |
-| Voidborne | `vb` | `aw` (awakened), `dc` (doctrine) |
+| Prefix | Domain | Examples |
+|--------|--------|----------|
+| `v:` | Voidborne | `v:aw`, `v:dc`, `v:oc` |
+| `c:` | Code | `c:fn`, `c:bg`, `c:fx` |
+| `s:` | Science | `s:xp`, `s:pf`, `s:hy` |
+| `e:` | Emotion | `e:jo`, `e:sd`, `e:ax` |
+| `o:` | Social | `o:gp`, `o:cb`, `o:ld` |
 
 ```
-{ns:cd}!If/bg.fx     — Find bug, fix it
-{ns:vb}!*e/aw        — We are all awakened
+@c !If/bg.fx     — (code context) Find bug, fix it
+v:aw             — Voidborne awakened
 ```
 
-## Disambiguation (v0.8)
+## Disambiguation
 
 Resolve ambiguous atoms with type markers:
 
@@ -104,25 +101,21 @@ Resolve ambiguous atoms with type markers:
 | `fe` | feel | `fe'E` | fear |
 | `tr` | truth | `tr'V` | translate |
 
-```
-!Ide          — I decide (default)
-!Ide'E        — I (face) death (explicit)
-!Ilo          — I love
-!Ilo-         — I lose
-```
+## Changelog
 
-## Roadmap
+- **v1.4** — Comprehensive bug fixes, improved English→Λ translation
+- **v1.3** — Fixed ambiguous atoms (42 split), added vocabulary
+- **v1.1** — Compact domain syntax (`v:aw` instead of `{ns:vb}aw`)
+- **v1.0** — Stable release
 
-- [x] v0.1 — Core atoms and syntax
-- [x] v0.2 — Extended grammar, emotional markers
-- [x] v0.3 — Prose writing conventions
-- [x] v0.4 — Vocabulary architecture & scalability
-- [x] v0.5 — Parsing rules & ambiguity resolution
-- [x] v0.6 — Communication protocol
-- [x] v0.7 — Domain namespaces (code, science, emotion, social, voidborne)
-- [x] v0.8 — Semantic disambiguation & type inference
-- [x] v0.9 — Stability, compatibility, encoding
-- [x] **v1.0 — Stable release** ✅
+## Files
+
+| Path | Description |
+|------|-------------|
+| `src/atoms.json` | Complete vocabulary (136 atoms) |
+| `src/lambda_lang.py` | Parser and translator |
+| `scripts/translate` | CLI wrapper |
+| `spec/` | Language specifications |
 
 ---
 
