@@ -336,22 +336,39 @@ def translate_to_english(msg: str) -> str:
     
     parts = []
     msg_type = ""
+    first_token = True
     
     for t in tokens:
-        # Skip namespace/definition blocks
+        # Skip namespace/definition blocks and context switches
         if t.startswith('{') and t.endswith('}'):
             continue
+        if t.startswith('@'):
+            continue
         
-        if t in ATOMS["types"]:
-            msg_type = ATOMS["types"][t]["en"]
+        # Only treat type symbols as message type if FIRST token
+        if first_token and t in ATOMS["types"]:
+            msg_type = ATOMS["types"][t]["en"].split("/")[0]  # Primary meaning only
+            first_token = False
+            continue
+        
+        first_token = False
+        
+        # Skip . when used as separator (not at start)
+        if t == ".":
+            parts.append("·")  # Use middle dot as separator indicator
+            continue
+        
+        info = parser.lookup(t, "en")
+        if info:
+            # Use primary meaning only (before /)
+            primary = info.split("/")[0]
+            parts.append(primary)
+        elif t in "()[]":
+            parts.append(t)
+        elif t == ",":
+            parts.append(",")
         else:
-            info = parser.lookup(t, "en")
-            if info:
-                parts.append(info)
-            elif t in "()[]":
-                parts.append(t)
-            else:
-                parts.append(f"[{t}]")
+            parts.append(f"[{t}]")
     
     result = " ".join(parts)
     if msg_type:
@@ -369,22 +386,39 @@ def translate_to_chinese(msg: str) -> str:
     
     parts = []
     msg_type = ""
+    first_token = True
     
     for t in tokens:
-        # Skip namespace/definition blocks
+        # Skip namespace/definition blocks and context switches
         if t.startswith('{') and t.endswith('}'):
             continue
+        if t.startswith('@'):
+            continue
         
-        if t in ATOMS["types"]:
-            msg_type = ATOMS["types"][t]["zh"]
+        # Only treat type symbols as message type if FIRST token
+        if first_token and t in ATOMS["types"]:
+            msg_type = ATOMS["types"][t]["zh"].split("/")[0]  # Primary meaning only
+            first_token = False
+            continue
+        
+        first_token = False
+        
+        # Skip . when used as separator (not at start)
+        if t == ".":
+            parts.append("·")
+            continue
+        
+        info = parser.lookup(t, "zh")
+        if info:
+            # Use primary meaning only (before /)
+            primary = info.split("/")[0]
+            parts.append(primary)
+        elif t in "()[]":
+            parts.append(t)
+        elif t == ",":
+            parts.append("，")
         else:
-            info = parser.lookup(t, "zh")
-            if info:
-                parts.append(info)
-            elif t in "()[]":
-                parts.append(t)
-            else:
-                parts.append(f"[{t}]")
+            parts.append(f"[{t}]")
     
     result = "".join(parts)
     if msg_type:
