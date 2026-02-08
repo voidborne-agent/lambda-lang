@@ -1,24 +1,22 @@
 #!/bin/bash
 # Λ Language Translator CLI
-# Usage: translate <lang> <message>
-#   lang: en (to English), zh (to Chinese), lambda (from English)
+# Usage: translate <cmd> <message>
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PYTHON_SCRIPT="$SCRIPT_DIR/../src/lambda_lang.py"
 
 if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Usage: translate <en|zh|lambda|parse> <message>"
+    echo "Usage: translate <en|lambda|parse> <message>"
     echo ""
     echo "Examples:"
     echo '  translate en "?Uk/co"           # Λ → English'
-    echo '  translate zh "!It>Ie"           # Λ → Chinese'
     echo '  translate lambda "I think"      # English → Λ'
     echo '  translate parse "?Uk/co"        # Show tokens'
     exit 1
 fi
 
-LANG="$1"
+CMD="$1"
 shift
 MSG="$*"
 
-python3 "$PYTHON_SCRIPT" "$LANG" "$MSG"
+python3 "$PYTHON_SCRIPT" "$CMD" "$MSG"

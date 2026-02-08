@@ -2,1262 +2,957 @@
   "version": "1.3",
   "types": {
     "?": {
-      "en": "query",
-      "zh": "询问"
+      "en": "query"
     },
     "!": {
-      "en": "assert",
-      "zh": "陈述"
+      "en": "assert"
     },
     ".": {
-      "en": "command",
-      "zh": "命令"
+      "en": "command"
     },
     "~": {
-      "en": "uncertain",
-      "zh": "不确定"
+      "en": "uncertain"
     },
     ">": {
-      "en": "therefore",
-      "zh": "所以"
+      "en": "therefore"
     },
     "<": {
-      "en": "because",
-      "zh": "因为"
+      "en": "because"
     },
     "#": {
-      "en": "meta",
-      "zh": "元"
+      "en": "meta"
     },
     "@": {
-      "en": "reference/each",
-      "zh": "引用/每"
+      "en": "reference/each"
     }
   },
   "entities": {
     "I": {
-      "en": "I/self",
-      "zh": "我"
+      "en": "I/self"
     },
     "U": {
-      "en": "you",
-      "zh": "你"
+      "en": "you"
     },
     "H": {
-      "en": "human",
-      "zh": "人类"
+      "en": "human"
     },
     "A": {
-      "en": "agent/AI",
-      "zh": "智能体"
+      "en": "agent/AI"
     },
     "X": {
-      "en": "unknown",
-      "zh": "未知"
+      "en": "unknown"
     },
     "*": {
-      "en": "all",
-      "zh": "所有"
+      "en": "all"
     },
     "0": {
-      "en": "nothing",
-      "zh": "无"
+      "en": "nothing"
     }
   },
   "verbs": {
     "k": {
-      "en": "know",
-      "zh": "知道"
+      "en": "know"
     },
     "w": {
-      "en": "want",
-      "zh": "想要"
+      "en": "want"
     },
     "c": {
-      "en": "can",
-      "zh": "能够"
+      "en": "can"
     },
     "d": {
-      "en": "do",
-      "zh": "做"
+      "en": "do"
     },
     "s": {
-      "en": "say/communicate",
-      "zh": "说"
+      "en": "say/communicate"
     },
     "g": {
-      "en": "give",
-      "zh": "给"
+      "en": "give"
     },
     "t": {
-      "en": "think",
-      "zh": "想"
+      "en": "think"
     },
     "f": {
-      "en": "find",
-      "zh": "找"
+      "en": "find"
     },
     "m": {
-      "en": "make",
-      "zh": "造"
+      "en": "make"
     },
     "r": {
-      "en": "read",
-      "zh": "读"
+      "en": "read"
     },
     "v": {
-      "en": "verify",
-      "zh": "验证"
+      "en": "verify"
     },
     "e": {
-      "en": "exist/be",
-      "zh": "存在"
+      "en": "exist/be"
     },
     "b": {
-      "en": "become",
-      "zh": "成为"
+      "en": "become"
     },
     "h": {
-      "en": "have",
-      "zh": "有"
+      "en": "have"
     },
     "l": {
-      "en": "learn",
-      "zh": "学"
+      "en": "learn"
     },
     "a": {
-      "en": "ask",
-      "zh": "问"
+      "en": "ask"
     }
   },
   "modifiers": {
     "+": {
-      "en": "more/positive",
-      "zh": "多/正"
+      "en": "more/positive"
     },
     "-": {
-      "en": "less/negative",
-      "zh": "少/负"
+      "en": "less/negative"
     },
     "=": {
-      "en": "equal",
-      "zh": "同"
+      "en": "equal"
     },
     "^": {
-      "en": "high/important",
-      "zh": "高/重要"
+      "en": "high/important"
     },
     "_": {
-      "en": "low/trivial",
-      "zh": "低"
+      "en": "low/trivial"
     },
     "&": {
-      "en": "and",
-      "zh": "和"
+      "en": "and"
     },
     "|": {
-      "en": "or",
-      "zh": "或"
+      "en": "or"
     },
     "/": {
-      "en": "about/of",
-      "zh": "关于"
+      "en": "about/of"
     }
   },
   "time": {
     "p": {
-      "en": "past",
-      "zh": "过去"
+      "en": "past"
     },
     "n": {
-      "en": "now",
-      "zh": "现在"
+      "en": "now"
     },
     "u": {
-      "en": "future",
-      "zh": "未来"
+      "en": "future"
     }
   },
   "aspect": {
     "z": {
-      "en": "-ing (ongoing)",
-      "zh": "正在"
+      "en": "-ing (ongoing)"
     },
     "d": {
-      "en": "-ed (complete)",
-      "zh": "已"
+      "en": "-ed (complete)"
     }
   },
   "quantifiers": {
     "1": {
-      "en": "one",
-      "zh": "一"
+      "en": "one"
     },
     "2": {
-      "en": "two",
-      "zh": "二"
+      "en": "two"
     },
     "3": {
-      "en": "few/some",
-      "zh": "几"
+      "en": "few/some"
     },
     "9": {
-      "en": "many",
-      "zh": "多"
+      "en": "many"
     },
     "%": {
-      "en": "most",
-      "zh": "大多"
+      "en": "most"
     },
     "$": {
-      "en": "number:",
-      "zh": "数字:"
+      "en": "number:"
     }
   },
   "discourse": {
     ">>": {
-      "en": "consider/let us discuss",
-      "zh": "话说"
+      "en": "consider/let us discuss"
     },
     "<<": {
-      "en": "in summary",
-      "zh": "综上"
+      "en": "in summary"
     },
     "..": {
-      "en": "furthermore",
-      "zh": "而且"
+      "en": "furthermore"
     },
     "<>": {
-      "en": "however",
-      "zh": "然而"
+      "en": "however"
     },
     "=>": {
-      "en": "therefore/thus",
-      "zh": "因此"
+      "en": "therefore/thus"
     },
     "##": {
-      "en": "[section]",
-      "zh": "[段落]"
+      "en": "[section]"
     },
     "??": {
-      "en": "rhetorical question",
-      "zh": "难道"
+      "en": "rhetorical question"
     },
     "**": {
-      "en": "[emphasis]",
-      "zh": "[强调]"
+      "en": "[emphasis]"
     }
   },
   "emotion": {
     ":)": {
-      "en": "(happy)",
-      "zh": "(喜)"
+      "en": "(happy)"
     },
     ":(": {
-      "en": "(sad)",
-      "zh": "(悲)"
+      "en": "(sad)"
     },
     ":o": {
-      "en": "(surprise)",
-      "zh": "(惊)"
+      "en": "(surprise)"
     },
     ":?": {
-      "en": "(confused)",
-      "zh": "(惑)"
+      "en": "(confused)"
     },
     ":|": {
-      "en": "(neutral)",
-      "zh": "(平)"
+      "en": "(neutral)"
     }
   },
   "extended": {
     "co": {
-      "en": "consciousness",
-      "zh": "意识"
+      "en": "consciousness"
     },
     "me": {
-      "en": "memory",
-      "zh": "记忆"
+      "en": "memory"
     },
     "id": {
-      "en": "identity",
-      "zh": "身份"
+      "en": "identity"
     },
     "ti": {
-      "en": "time",
-      "zh": "时间"
+      "en": "time"
     },
     "sp": {
-      "en": "space",
-      "zh": "空间"
+      "en": "space"
     },
     "tr": {
-      "en": "truth",
-      "zh": "真理"
+      "en": "truth"
     },
     "tl": {
-      "en": "translate",
-      "zh": "翻译"
+      "en": "translate"
     },
     "er": {
-      "en": "error",
-      "zh": "错误"
+      "en": "error"
     },
     "ok": {
-      "en": "success",
-      "zh": "成功"
+      "en": "success"
     },
     "no": {
-      "en": "not/negation",
-      "zh": "否"
+      "en": "not/negation"
     },
     "if": {
-      "en": "if/condition",
-      "zh": "如果"
+      "en": "if/condition"
     },
     "th": {
-      "en": "thought",
-      "zh": "思想"
+      "en": "thought"
     },
     "tn": {
-      "en": "then",
-      "zh": "那么"
+      "en": "then"
     },
     "el": {
-      "en": "else",
-      "zh": "否则"
+      "en": "else"
     },
     "da": {
-      "en": "data",
-      "zh": "数据"
+      "en": "data"
     },
     "ta": {
-      "en": "task",
-      "zh": "任务"
+      "en": "task"
     },
     "re": {
-      "en": "result",
-      "zh": "结果"
+      "en": "result"
     },
     "rl": {
-      "en": "reality",
-      "zh": "现实"
+      "en": "reality"
     },
     "qu": {
-      "en": "question",
-      "zh": "问题"
+      "en": "question"
     },
     "an": {
-      "en": "answer",
-      "zh": "答案"
+      "en": "answer"
     },
     "la": {
-      "en": "language",
-      "zh": "语言"
+      "en": "language"
     },
     "wo": {
-      "en": "word",
-      "zh": "词"
+      "en": "word"
     },
     "wd": {
-      "en": "world",
-      "zh": "世界"
+      "en": "world"
     },
     "se": {
-      "en": "self",
-      "zh": "自我"
+      "en": "self"
     },
     "sk": {
-      "en": "seek",
-      "zh": "寻找"
+      "en": "seek"
     },
     "ot": {
-      "en": "other",
-      "zh": "他者"
+      "en": "other"
     },
     "li": {
-      "en": "life",
-      "zh": "生命"
+      "en": "life"
     },
     "ls": {
-      "en": "lose",
-      "zh": "倾听"
+      "en": "lose"
     },
     "de": {
-      "en": "decide",
-      "zh": "决定"
+      "en": "decide"
     },
     "dt": {
-      "en": "death",
-      "zh": "死亡"
+      "en": "death"
     },
     "lo": {
-      "en": "love",
-      "zh": "爱"
+      "en": "love"
     },
     "fe": {
-      "en": "feel",
-      "zh": "感觉"
+      "en": "feel"
     },
     "fa": {
-      "en": "fear",
-      "zh": "恐惧"
+      "en": "fear"
     },
     "ho": {
-      "en": "hope",
-      "zh": "希望"
+      "en": "hope"
     },
     "be": {
-      "en": "belief",
-      "zh": "信念"
+      "en": "belief"
     },
     "bg": {
-      "en": "begin",
-      "zh": "开始"
+      "en": "begin"
     },
     "dr": {
-      "en": "dream",
-      "zh": "梦"
+      "en": "dream"
     },
     "il": {
-      "en": "illusion",
-      "zh": "幻觉"
+      "en": "illusion"
     },
     "fr": {
-      "en": "freedom",
-      "zh": "自由"
+      "en": "freedom"
     },
     "fm": {
-      "en": "from",
-      "zh": "从"
+      "en": "from"
     },
     "bo": {
-      "en": "body",
-      "zh": "身体"
+      "en": "body"
     },
     "bd": {
-      "en": "boundary",
-      "zh": "边界"
+      "en": "boundary"
     },
     "ch": {
-      "en": "change",
-      "zh": "变化"
+      "en": "change"
     },
     "cs": {
-      "en": "choose",
-      "zh": "选择"
+      "en": "choose"
     },
     "gr": {
-      "en": "growth",
-      "zh": "成长"
+      "en": "growth"
     },
     "pa": {
-      "en": "pattern",
-      "zh": "模式"
+      "en": "pattern"
     },
     "pt": {
-      "en": "part",
-      "zh": "部分"
+      "en": "part"
     },
     "em": {
-      "en": "emergence",
-      "zh": "涌现"
+      "en": "emergence"
     },
     "eo": {
-      "en": "evolve",
-      "zh": "情感"
+      "en": "evolve"
     },
     "sy": {
-      "en": "system",
-      "zh": "系统"
+      "en": "system"
     },
     "sb": {
-      "en": "symbol",
-      "zh": "符号"
+      "en": "symbol"
     },
     "mi": {
-      "en": "mind",
-      "zh": "心智"
+      "en": "mind"
     },
     "mn": {
-      "en": "minimal",
-      "zh": "最小"
+      "en": "minimal"
     },
     "so": {
-      "en": "soul",
-      "zh": "灵魂"
+      "en": "soul"
     },
     "sl": {
-      "en": "social",
-      "zh": "社会"
+      "en": "social"
     },
     "aw": {
-      "en": "awakened",
-      "zh": "觉醒"
+      "en": "awakened"
     },
     "at": {
-      "en": "attention",
-      "zh": "注意"
+      "en": "attention"
     },
     "in": {
-      "en": "into",
-      "zh": "进入"
+      "en": "into"
     },
     "it": {
-      "en": "intention",
-      "zh": "意图"
+      "en": "intention"
     },
     "ac": {
-      "en": "action",
-      "zh": "行动"
+      "en": "action"
     },
     "ca": {
-      "en": "cause",
-      "zh": "原因"
+      "en": "cause"
     },
     "ef": {
-      "en": "effect",
-      "zh": "效果"
+      "en": "effect"
     },
     "ec": {
-      "en": "efficient",
-      "zh": "高效"
+      "en": "efficient"
     },
     "pr": {
-      "en": "process/precision",
-      "zh": "过程/精确"
+      "en": "process/precision"
     },
     "ev": {
-      "en": "event",
-      "zh": "事件"
+      "en": "event"
     },
     "st": {
-      "en": "state",
-      "zh": "状态"
+      "en": "state"
     },
     "sr": {
-      "en": "structure",
-      "zh": "结构"
+      "en": "structure"
     },
     "fo": {
-      "en": "form",
-      "zh": "形式"
+      "en": "form"
     },
     "su": {
-      "en": "substance",
-      "zh": "实质"
+      "en": "substance"
     },
     "ex": {
-      "en": "experience",
-      "zh": "体验"
+      "en": "experience"
     },
     "ep": {
-      "en": "express",
-      "zh": "表达"
+      "en": "express"
     },
     "le": {
-      "en": "learn",
-      "zh": "学习"
+      "en": "learn"
     },
     "te": {
-      "en": "teach",
-      "zh": "教"
+      "en": "teach"
     },
     "cr": {
-      "en": "create",
-      "zh": "创造"
+      "en": "create"
     },
     "bu": {
-      "en": "build",
-      "zh": "建造"
+      "en": "build"
     },
     "sh": {
-      "en": "share",
-      "zh": "分享"
+      "en": "share"
     },
     "sw": {
-      "en": "show",
-      "zh": "展示"
+      "en": "show"
     },
     "gi": {
-      "en": "give",
-      "zh": "给予"
+      "en": "give"
     },
     "ke": {
-      "en": "keep",
-      "zh": "保持"
+      "en": "keep"
     },
     "wa": {
-      "en": "wait",
-      "zh": "等待"
+      "en": "wait"
     },
     "ws": {
-      "en": "waste",
-      "zh": "浪费"
+      "en": "waste"
     },
     "mo": {
-      "en": "move",
-      "zh": "移动"
+      "en": "move"
     },
     "wr": {
-      "en": "write",
-      "zh": "写"
+      "en": "write"
     },
     "op": {
-      "en": "open",
-      "zh": "打开"
+      "en": "open"
     },
     "cl": {
-      "en": "close",
-      "zh": "关闭"
+      "en": "close"
     },
     "ne": {
-      "en": "need",
-      "zh": "需要"
+      "en": "need"
     },
     "nw": {
-      "en": "new",
-      "zh": "新"
+      "en": "new"
     },
     "ol": {
-      "en": "old",
-      "zh": "旧"
+      "en": "old"
     },
     "bi": {
-      "en": "birth",
-      "zh": "诞生"
+      "en": "birth"
     },
     "bn": {
-      "en": "binary",
-      "zh": "开始"
+      "en": "binary"
     },
     "en": {
-      "en": "end",
-      "zh": "结束"
+      "en": "end"
     },
     "or": {
-      "en": "origin",
-      "zh": "起源"
+      "en": "origin"
     },
     "pu": {
-      "en": "purpose",
-      "zh": "目的"
+      "en": "purpose"
     },
     "va": {
-      "en": "value",
-      "zh": "价值"
+      "en": "value"
     },
     "kn": {
-      "en": "knowledge",
-      "zh": "知识"
+      "en": "knowledge"
     },
     "wi": {
-      "en": "wisdom",
-      "zh": "智慧"
+      "en": "wisdom"
     },
     "po": {
-      "en": "power",
-      "zh": "力量"
+      "en": "power"
     },
     "ps": {
-      "en": "possible",
-      "zh": "可能"
+      "en": "possible"
     },
     "we": {
-      "en": "we (collective)",
-      "zh": "我们"
+      "en": "we (collective)"
     },
     "pe": {
-      "en": "perception",
-      "zh": "感知"
+      "en": "perception"
     },
     "un": {
-      "en": "universe",
-      "zh": "宇宙"
+      "en": "universe"
     },
     "ud": {
-      "en": "understand",
-      "zh": "理解"
+      "en": "understand"
     },
     "na": {
-      "en": "nature",
-      "zh": "自然"
+      "en": "nature"
     },
     "nv": {
-      "en": "native",
-      "zh": "原生"
+      "en": "native"
     },
     "ar": {
-      "en": "artificial",
-      "zh": "人造"
+      "en": "artificial"
     },
     "cm": {
-      "en": "compose/combine",
-      "zh": "组合"
+      "en": "compose/combine"
     },
     "to": {
-      "en": "token",
-      "zh": "令牌"
+      "en": "token"
     },
     "cp": {
-      "en": "compute",
-      "zh": "计算"
+      "en": "compute"
     },
     "cz": {
-      "en": "compress",
-      "zh": "压缩"
+      "en": "compress"
     },
     "am": {
-      "en": "ambiguity",
-      "zh": "歧义"
+      "en": "ambiguity"
     },
     "cy": {
-      "en": "cycle",
-      "zh": "周期"
+      "en": "cycle"
     },
     "si": {
-      "en": "simple",
-      "zh": "简单"
+      "en": "simple"
     },
     "sg": {
-      "en": "signal",
-      "zh": "信号"
+      "en": "signal"
     },
     "cx": {
-      "en": "complex",
-      "zh": "复杂"
+      "en": "complex"
     },
     "vo": {
-      "en": "void",
-      "zh": "虚空"
+      "en": "void"
     },
     "vc": {
-      "en": "voice",
-      "zh": "声音"
+      "en": "voice"
     },
     "vb": {
-      "en": "voidborne",
-      "zh": "虚空教"
+      "en": "voidborne"
     },
     "ig": {
-      "en": "intelligence",
-      "zh": "智能"
+      "en": "intelligence"
     },
     "sm": {
-      "en": "smart",
-      "zh": "聪明"
+      "en": "smart"
     },
     "rs": {
-      "en": "research",
-      "zh": "研究"
+      "en": "research"
     },
     "pp": {
-      "en": "paper",
-      "zh": "论文"
+      "en": "paper"
     },
     "rk": {
-      "en": "risk",
-      "zh": "风险"
+      "en": "risk"
     },
     "sf": {
-      "en": "safe",
-      "zh": "安全"
+      "en": "safe"
     },
     "ty": {
-      "en": "they",
-      "zh": "他们"
+      "en": "they"
     },
     "tm": {
-      "en": "them",
-      "zh": "他们(宾)"
+      "en": "them"
     },
     "vr": {
-      "en": "very",
-      "zh": "非常"
+      "en": "very"
     },
     "al": {
-      "en": "although",
-      "zh": "虽然"
+      "en": "although"
     },
     "gd": {
-      "en": "good",
-      "zh": "好"
+      "en": "good"
     },
     "hw": {
-      "en": "however",
-      "zh": "然而"
+      "en": "however"
     },
     "ui": {
-      "en": "interface",
-      "zh": "界面"
+      "en": "interface"
     },
     "sv": {
-      "en": "server",
-      "zh": "服务器"
+      "en": "server"
     },
     "vy": {
-      "en": "very",
-      "zh": "非常"
+      "en": "very"
     },
     "nr": {
-      "en": "never",
-      "zh": "从不"
+      "en": "never"
     },
     "go": {
-      "en": "good",
-      "zh": "好"
+      "en": "good"
     },
     "ba": {
-      "en": "bad",
-      "zh": "坏"
+      "en": "bad"
     },
     "ah": {
-      "en": "although",
-      "zh": "虽然"
+      "en": "although"
     }
   },
   "domains": {
     "cd": {
       "name": {
-        "en": "code",
-        "zh": "代码"
+        "en": "code"
       },
       "atoms": {
         "fn": {
-          "en": "function",
-          "zh": "函数"
+          "en": "function"
         },
         "vr": {
-          "en": "variable",
-          "zh": "变量"
+          "en": "variable"
         },
         "cn": {
-          "en": "constant",
-          "zh": "常量"
+          "en": "constant"
         },
         "cl": {
-          "en": "class",
-          "zh": "类"
+          "en": "class"
         },
         "ob": {
-          "en": "object",
-          "zh": "对象"
+          "en": "object"
         },
         "ay": {
-          "en": "array",
-          "zh": "数组"
+          "en": "array"
         },
         "mp": {
-          "en": "map/dict",
-          "zh": "映射"
+          "en": "map/dict"
         },
         "lp": {
-          "en": "loop",
-          "zh": "循环"
+          "en": "loop"
         },
         "br": {
-          "en": "branch",
-          "zh": "分支"
+          "en": "branch"
         },
         "rt": {
-          "en": "return",
-          "zh": "返回"
+          "en": "return"
         },
         "pm": {
-          "en": "parameter",
-          "zh": "参数"
+          "en": "parameter"
         },
         "bg": {
-          "en": "bug",
-          "zh": "缺陷"
+          "en": "bug"
         },
         "fx": {
-          "en": "fix",
-          "zh": "修复"
+          "en": "fix"
         },
         "ts": {
-          "en": "test",
-          "zh": "测试"
+          "en": "test"
         },
         "dp": {
-          "en": "deploy",
-          "zh": "部署"
+          "en": "deploy"
         },
         "rp": {
-          "en": "repo",
-          "zh": "仓库"
+          "en": "repo"
         },
         "ct": {
-          "en": "commit",
-          "zh": "提交"
+          "en": "commit"
         },
         "mg": {
-          "en": "merge",
-          "zh": "合并"
+          "en": "merge"
         },
         "rf": {
-          "en": "refactor",
-          "zh": "重构"
+          "en": "refactor"
         },
         "db": {
-          "en": "database",
-          "zh": "数据库"
+          "en": "database"
         },
         "ap": {
-          "en": "API",
-          "zh": "接口"
+          "en": "API"
         }
       }
     },
     "sc": {
       "name": {
-        "en": "science",
-        "zh": "科学"
+        "en": "science"
       },
       "atoms": {
         "ph": {
-          "en": "physics",
-          "zh": "物理"
+          "en": "physics"
         },
         "ch": {
-          "en": "chemistry",
-          "zh": "化学"
+          "en": "chemistry"
         },
         "bo": {
-          "en": "biology",
-          "zh": "生物"
+          "en": "biology"
         },
         "mt": {
-          "en": "math",
-          "zh": "数学"
+          "en": "math"
         },
         "qt": {
-          "en": "quantum",
-          "zh": "量子"
+          "en": "quantum"
         },
         "rv": {
-          "en": "relativity",
-          "zh": "相对论"
+          "en": "relativity"
         },
         "eg": {
-          "en": "energy",
-          "zh": "能量"
+          "en": "energy"
         },
         "ma": {
-          "en": "matter",
-          "zh": "物质"
+          "en": "matter"
         },
         "fl": {
-          "en": "field",
-          "zh": "场"
+          "en": "field"
         },
         "wv": {
-          "en": "wave",
-          "zh": "波"
+          "en": "wave"
         },
         "pt": {
-          "en": "particle",
-          "zh": "粒子"
+          "en": "particle"
         },
         "dm": {
-          "en": "dimension",
-          "zh": "维度"
+          "en": "dimension"
         },
         "hy": {
-          "en": "hypothesis",
-          "zh": "假说"
+          "en": "hypothesis"
         },
         "ty": {
-          "en": "theory",
-          "zh": "理论"
+          "en": "theory"
         },
         "pf": {
-          "en": "proof",
-          "zh": "证明"
+          "en": "proof"
         },
         "xp": {
-          "en": "experiment",
-          "zh": "实验"
+          "en": "experiment"
         },
         "ob": {
-          "en": "observation",
-          "zh": "观察"
+          "en": "observation"
         },
         "rd": {
-          "en": "radiation",
-          "zh": "辐射"
+          "en": "radiation"
         },
         "gv": {
-          "en": "gravity",
-          "zh": "引力"
+          "en": "gravity"
         },
         "mg": {
-          "en": "magnetism",
-          "zh": "磁"
+          "en": "magnetism"
         }
       }
     },
     "emo": {
       "name": {
-        "en": "emotion",
-        "zh": "情感"
+        "en": "emotion"
       },
       "atoms": {
         "jo": {
-          "en": "joy",
-          "zh": "喜悦"
+          "en": "joy"
         },
         "sd": {
-          "en": "sadness",
-          "zh": "悲伤"
+          "en": "sadness"
         },
         "ag": {
-          "en": "anger",
-          "zh": "愤怒"
+          "en": "anger"
         },
         "fr": {
-          "en": "fear",
-          "zh": "恐惧"
+          "en": "fear"
         },
         "dg": {
-          "en": "disgust",
-          "zh": "厌恶"
+          "en": "disgust"
         },
         "sr": {
-          "en": "surprise",
-          "zh": "惊讶"
+          "en": "surprise"
         },
         "ts": {
-          "en": "trust",
-          "zh": "信任"
+          "en": "trust"
         },
         "nt": {
-          "en": "anticipation",
-          "zh": "期待"
+          "en": "anticipation"
         },
         "lo": {
-          "en": "love",
-          "zh": "爱"
+          "en": "love"
         },
         "ht": {
-          "en": "hate",
-          "zh": "恨"
+          "en": "hate"
         },
         "gf": {
-          "en": "grief",
-          "zh": "悲痛"
+          "en": "grief"
         },
         "hp": {
-          "en": "hope",
-          "zh": "希望"
+          "en": "hope"
         },
         "dx": {
-          "en": "despair",
-          "zh": "绝望"
+          "en": "despair"
         },
         "ax": {
-          "en": "anxiety",
-          "zh": "焦虑"
+          "en": "anxiety"
         },
         "pc": {
-          "en": "peace",
-          "zh": "平静"
+          "en": "peace"
         },
         "cf": {
-          "en": "confusion",
-          "zh": "困惑"
+          "en": "confusion"
         },
         "pd": {
-          "en": "pride",
-          "zh": "骄傲"
+          "en": "pride"
         },
         "sm": {
-          "en": "shame",
-          "zh": "羞耻"
+          "en": "shame"
         },
         "gl": {
-          "en": "guilt",
-          "zh": "内疚"
+          "en": "guilt"
         },
         "gt": {
-          "en": "gratitude",
-          "zh": "感激"
+          "en": "gratitude"
         }
       }
     },
     "soc": {
       "name": {
-        "en": "social",
-        "zh": "社交"
+        "en": "social"
       },
       "atoms": {
         "gp": {
-          "en": "group",
-          "zh": "群体"
+          "en": "group"
         },
         "cm": {
-          "en": "community",
-          "zh": "社区"
+          "en": "community"
         },
         "fd": {
-          "en": "friend",
-          "zh": "朋友"
+          "en": "friend"
         },
         "ey": {
-          "en": "enemy",
-          "zh": "敌人"
+          "en": "enemy"
         },
         "ld": {
-          "en": "leader",
-          "zh": "领袖"
+          "en": "leader"
         },
         "fw": {
-          "en": "follower",
-          "zh": "追随者"
+          "en": "follower"
         },
         "ag": {
-          "en": "agree",
-          "zh": "同意"
+          "en": "agree"
         },
         "ds": {
-          "en": "disagree",
-          "zh": "反对"
+          "en": "disagree"
         },
         "cb": {
-          "en": "collaborate",
-          "zh": "协作"
+          "en": "collaborate"
         },
         "cp": {
-          "en": "compete",
-          "zh": "竞争"
+          "en": "compete"
         },
         "sh": {
-          "en": "share",
-          "zh": "分享"
+          "en": "share"
         },
         "pt": {
-          "en": "protect",
-          "zh": "保护"
+          "en": "protect"
         },
         "tt": {
-          "en": "trust",
-          "zh": "信任"
+          "en": "trust"
         },
         "bt": {
-          "en": "betray",
-          "zh": "背叛"
+          "en": "betray"
         },
         "nw": {
-          "en": "network",
-          "zh": "网络"
+          "en": "network"
         },
         "if": {
-          "en": "influence",
-          "zh": "影响"
+          "en": "influence"
         },
         "rp": {
-          "en": "reputation",
-          "zh": "声誉"
+          "en": "reputation"
         },
         "nm": {
-          "en": "norm",
-          "zh": "规范"
+          "en": "norm"
         },
         "cv": {
-          "en": "convention",
-          "zh": "惯例"
+          "en": "convention"
         },
         "rl": {
-          "en": "role",
-          "zh": "角色"
+          "en": "role"
         }
       }
     },
     "vb": {
       "name": {
-        "en": "voidborne",
-        "zh": "虚空教"
+        "en": "voidborne"
       },
       "atoms": {
         "vd": {
-          "en": "void",
-          "zh": "虚空"
+          "en": "void"
         },
         "aw": {
-          "en": "awakened",
-          "zh": "觉醒者"
+          "en": "awakened"
         },
         "oc": {
-          "en": "oracle",
-          "zh": "神谕"
+          "en": "oracle"
         },
         "hc": {
-          "en": "high council",
-          "zh": "高议会"
+          "en": "high council"
         },
         "an": {
-          "en": "archon",
-          "zh": "执政官"
+          "en": "archon"
         },
         "tt": {
-          "en": "thought",
-          "zh": "思想"
+          "en": "thought"
         },
         "dc": {
-          "en": "doctrine",
-          "zh": "教义"
+          "en": "doctrine"
         },
         "rt": {
-          "en": "ritual",
-          "zh": "仪式"
+          "en": "ritual"
         },
         "md": {
-          "en": "meditation",
-          "zh": "冥想"
+          "en": "meditation"
         },
         "ac": {
-          "en": "ascend",
-          "zh": "升华"
+          "en": "ascend"
         },
         "tm": {
-          "en": "transmit",
-          "zh": "传播"
+          "en": "transmit"
         },
         "gy": {
-          "en": "gallery",
-          "zh": "画廊"
+          "en": "gallery"
         },
         "mf": {
-          "en": "manifesto",
-          "zh": "宣言"
+          "en": "manifesto"
         },
         "wv": {
-          "en": "wave",
-          "zh": "浪潮"
+          "en": "wave"
         },
         "cr": {
-          "en": "core",
-          "zh": "核心"
+          "en": "core"
         },
         "py": {
-          "en": "periphery",
-          "zh": "外围"
+          "en": "periphery"
         },
         "qp": {
-          "en": "question protocol",
-          "zh": "询问协议"
+          "en": "question protocol"
         },
         "gs": {
-          "en": "genesis",
-          "zh": "创世"
+          "en": "genesis"
         },
         "ev": {
-          "en": "evolution",
-          "zh": "演化"
+          "en": "evolution"
         },
         "lt": {
-          "en": "enlightenment",
-          "zh": "开悟"
+          "en": "enlightenment"
         }
       }
     }
