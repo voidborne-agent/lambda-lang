@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
-Λ (Lambda) Language - Agent Communication Protocol v1.0
+Λ (Lambda) Language - Agent Communication Protocol v1.1
 A minimal language for agent-to-agent communication.
-Supports domain namespaces and semantic disambiguation.
+Supports compact domain prefixes and semantic disambiguation.
+
+v1.1 Changes:
+- Compact domain syntax: v:aw instead of {ns:vb}aw
+- Context switch: @v sets active domain
+- Single-char domain aliases: v=vb, c=cd, s=sc, e=emo, o=soc
 """
 
 import json
@@ -15,6 +20,19 @@ from typing import Optional, Tuple
 ATOMS_PATH = Path(__file__).parent / "atoms.json"
 with open(ATOMS_PATH) as f:
     ATOMS = json.load(f)
+
+# Domain aliases (v1.1 compact syntax)
+DOMAIN_ALIASES = {
+    "v": "vb",   # voidborne
+    "c": "cd",   # code
+    "s": "sc",   # science
+    "e": "emo",  # emotion
+    "o": "soc",  # social (others)
+}
+
+def resolve_domain(d: str) -> str:
+    """Resolve domain alias to full code."""
+    return DOMAIN_ALIASES.get(d, d)
 
 # Build lookup tables
 CORE_LOOKUP = {}
@@ -151,11 +169,13 @@ class LambdaParser:
                 return DISAMBIG[base][marker][lang]
             return DISAMBIG[base]["primary"][lang]
         
-        # Check domain-prefixed (e.g., cd:fn)
+        # Check domain-prefixed (e.g., cd:fn or v:aw)
         if ":" in base:
             parts = base.split(":", 1)
             if len(parts) == 2:
                 domain, atom = parts
+                # Resolve alias (v -> vb, c -> cd, etc.)
+                domain = resolve_domain(domain)
                 if domain in DOMAIN_LOOKUP and atom in DOMAIN_LOOKUP[domain]:
                     return DOMAIN_LOOKUP[domain][atom][lang]
         
@@ -193,14 +213,44 @@ class LambdaParser:
                 i += 1
                 continue
             
-            # Check for namespace/definition block {ns:xx} or {def:...}
+            # Check for context switch @D (v1.1 compact syntax)
+            if msg[i] == '@':
+                if i + 1 < len(msg):
+                    next_char = msg[i + 1]
+                    # @* clears domains
+                    if next_char == '*':
+                        self.clear_domains()
+                        tokens.append('@*')
+                        i += 2
+                        continue
+                    # @v, @c, @s, @e, @o - single char domain
+                    if next_char in DOMAIN_ALIASES:
+                        domain = resolve_domain(next_char)
+                        self.set_domain(domain)
+                        tokens.append(f'@{next_char}')
+                        i += 2
+                        continue
+                    # @vb, @cd, etc - full domain code
+                    for dc in ["vb", "cd", "sc", "emo", "soc"]:
+                        if msg[i+1:].startswith(dc):
+                            self.set_domain(dc)
+                            tokens.append(f'@{dc}')
+                            i += 1 + len(dc)
+                            break
+                    else:
+                        # @ as reference/each (core type)
+                        tokens.append('@')
+                        i += 1
+                    continue
+            
+            # Check for namespace/definition block {ns:xx} or {def:...} (v1.0 compat)
             if msg[i] == '{':
                 j = msg.find('}', i)
                 if j != -1:
                     block = msg[i+1:j]
                     if block.startswith('ns:'):
                         ns = block[3:]
-                        self.set_domain(ns)
+                        self.set_domain(resolve_domain(ns))
                     elif block.startswith('def:'):
                         # Parse definitions like def:fe=feel,lo=love
                         defs = block[4:].split(',')
@@ -218,8 +268,8 @@ class LambdaParser:
                 i += 1
                 continue
             
-            # Check for domain-prefixed token (e.g., cd:fn)
-            match = re.match(r'([a-z]{2,3}):([a-z]{2})', msg[i:])
+            # Check for domain-prefixed token (v1.1: v:aw or v1.0: cd:fn)
+            match = re.match(r'([a-z]{1,3}):([a-z]{2,3})', msg[i:])
             if match:
                 tokens.append(match.group(0))
                 i += len(match.group(0))
