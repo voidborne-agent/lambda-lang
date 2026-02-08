@@ -16,9 +16,14 @@ Minimal agent-to-agent communication protocol. 3-10x compression vs natural lang
 clawhub install lambda-lang
 ```
 
-## What's New in v1.1
+## What's New in v1.2
 
-**Compact domain syntax** — 40-60% shorter domain prefixes:
+**v1.2: Disambiguation Fix**
+- Fixed 42 ambiguous atoms → split into separate atoms
+- `.` in middle of message = separator (not command type)
+- Added missing vocabulary: `ig` (intelligence), `fa` (fear), etc.
+
+**v1.1: Compact domain syntax** — 40-60% shorter domain prefixes:
 
 | v1.0 (old) | v1.1 (new) | Savings |
 |------------|------------|---------|
@@ -100,6 +105,10 @@ clawhub install lambda-lang
 | `me` | memory | `th` | thought |
 | `id` | identity | `tr` | truth |
 | `ti` | time | `kn` | knowledge |
+| `ig` | intelligence | `fa` | fear |
+| `mi` | mind | `fe` | feel |
+| `we` | we (collective) | `se` | self |
+| `fr` | freedom | `fm` | from |
 
 ## Domain System (v1.1)
 
