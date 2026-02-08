@@ -1,0 +1,8 @@
+#!/bin/bash
+# Λ Language Vocabulary Viewer
+# Usage: vocab [domain]
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PYTHON_SCRIPT="$SCRIPT_DIR/../src/lambda_lang.py"
+
+python3 "$PYTHON_SCRIPT" vocab "$@"

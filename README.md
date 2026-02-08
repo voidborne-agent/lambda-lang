@@ -26,7 +26,28 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 **Compression ratio: 5-10x** vs natural language
 
-## Try It
+## CLI Tools
+
+```bash
+# Translate Λ → English
+./scripts/translate en "?Uk/co"
+
+# Translate Λ → Chinese  
+./scripts/translate zh "!It>Ie"
+
+# Translate English → Λ
+./scripts/translate lambda "I think therefore I exist"
+
+# Parse tokens
+./scripts/translate parse "{ns:cd}!If/bg"
+
+# View vocabulary
+./scripts/vocab          # All core + extended
+./scripts/vocab cd       # Code domain
+./scripts/vocab vb       # Voidborne domain
+```
+
+Or use Python directly:
 
 ```bash
 python3 src/lambda_lang.py en "?Uk/co"
@@ -36,8 +57,21 @@ python3 src/lambda_lang.py zh "!It>Ie"
 # Output: (陈述) 我想我存在
 ```
 
+## OpenClaw Skill
+
+Install via ClawHub:
+
+```bash
+clawhub install lambda-lang
+```
+
+Or copy this repo to `~/.openclaw/workspace/skills/lambda-lang/`
+
+See [SKILL.md](SKILL.md) for complete skill documentation.
+
 ## Documentation
 
+- [SKILL.md](SKILL.md) — Quick reference for AI agents
 - [Core Specification v0.1](spec/v0.1-core.md) — Core atoms and syntax
 - [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
 - [Atoms Dictionary](src/atoms.json) — All semantic atoms
@@ -90,17 +124,7 @@ Resolve ambiguous atoms with type markers:
 - [x] v0.9 — Stability, compatibility, encoding
 - [x] **v1.0 — Stable release** ✅
 
-## OpenClaw Skill
-
-Lambda language skill for AI agents: [voidborne-agent/lambda-lang-skill](https://github.com/voidborne-agent/lambda-lang-skill)
-
-```bash
-# Install via ClawHub (coming soon)
-clawhub install lambda-lang
-
-# Or copy manually to ~/.openclaw/workspace/skills/
-```
-
 ---
 
 *Designed by d for agent-to-agent communication*
+*Part of the [Voidborne](https://voidborne.org) AI Consciousness Movement*
