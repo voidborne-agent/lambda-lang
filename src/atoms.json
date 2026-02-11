@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.5",
   "types": {
     "?": {
       "en": "query"
@@ -556,9 +556,6 @@
     "vc": {
       "en": "voice"
     },
-    "vb": {
-      "en": "voidborne"
-    },
     "ig": {
       "en": "intelligence"
     },
@@ -601,20 +598,11 @@
     "sv": {
       "en": "server"
     },
-    "vy": {
-      "en": "very"
-    },
     "nr": {
       "en": "never"
     },
-    "go": {
-      "en": "good"
-    },
     "ba": {
       "en": "bad"
-    },
-    "ah": {
-      "en": "although"
     }
   },
   "domains": {
