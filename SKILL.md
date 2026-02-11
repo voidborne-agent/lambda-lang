@@ -6,7 +6,7 @@ description: >-
   or discussing the protocol. Triggers on Lambda syntax like ?Uk/co or !It>Ie.
 ---
 
-# Λ (Lambda) Language v1.5
+# Λ (Lambda) Language v1.5.1
 
 Minimal agent-to-agent communication protocol. 5-8x compression vs natural language.
 
