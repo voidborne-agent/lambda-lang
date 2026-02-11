@@ -6,9 +6,15 @@ description: >-
   or discussing the protocol. Triggers on Lambda syntax like ?Uk/co or !It>Ie.
 ---
 
-# Λ (Lambda) Language v1.4
+# Λ (Lambda) Language v1.5
 
-Minimal agent-to-agent communication protocol. 3-10x compression vs natural language.
+Minimal agent-to-agent communication protocol. 5-8x compression vs natural language.
+
+## v1.5 Changes
+- Fixed duplicate atoms: removed `vy`/`go`/`ah` (kept `vr`/`gd`/`al`)
+- Removed `vb` from extended atoms (conflicts with domain code)
+- Fixed empty input handling
+- Extended atoms: 132 (was 136)
 
 ## Installation
 
@@ -113,7 +119,7 @@ python3 -c "import json; print(json.load(open('src/atoms.json'))['extended']['co
 | `we` | we (collective) | `se` | self |
 | `fr` | freedom | `fe` | feel |
 
-See `src/atoms.json` for complete list (136 atoms).
+See `src/atoms.json` for complete list (132 atoms).
 
 ## Domain System
 

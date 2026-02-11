@@ -411,6 +411,10 @@ def english_to_lambda(text: str) -> str:
     original = text
     text = text.lower().strip()
     
+    # Handle empty input
+    if not text:
+        return ""
+    
     # Build comprehensive reverse lookup (English -> Lambda)
     rev = {}
     
