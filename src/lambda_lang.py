@@ -650,13 +650,15 @@ def run_tests():
         ("?Uk/co", "query"),
         ("!Ik", "I"),
         ("!It>Ie", "think"),
-        ("{ns:cd}!If/bg", "bug"),
+        ("c:xb", "bug"),  # v1.6: bg→xb in code domain
         ("!Ide", "decide"),
         ("!Ide'E", "death"),
         ("!Ilo", "love"),
         ("!Ilo-", "lose"),
         ("!Ife", "feel"),
         ("!Ife'E", "fear"),
+        ("!Ihp", "help"),  # v1.6 new atom
+        ("!Irn/ta", "run"),  # v1.6 new atom
     ]
     
     print("Running tests...")
