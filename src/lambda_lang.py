@@ -521,6 +521,18 @@ def english_to_lambda(text: str) -> str:
         "assess": "as", "assesses": "as", "assessed": "as", "assessing": "as",
         "evaluate": "ev", "evaluates": "ev", "evaluated": "ev", "evaluating": "ev",
         "analyze": "an", "analyzes": "an", "analyzed": "an", "analyzing": "an", "analysis": "an",
+        # v1.8.1 - fidelity improvements
+        "aware": "aw", "awareness": "aw", "awakened": "aw",
+        "detailed": "dl", "detail": "dl", "details": "dl",
+        "project": "pj", "projects": "pj",
+        "request": "rq", "requests": "rq", "requested": "rq", "requesting": "rq",
+        "proposal": "pp", "propose": "pp", "proposes": "pp", "proposed": "pp",
+        "please": "pl",
+        "pattern": "pt", "patterns": "pt",
+        "between": "bt",
+        "emerge": "em", "emerges": "em", "emerged": "em", "emerging": "em", "emergence": "em",
+        "disagree": "o:ds", "disagrees": "o:ds", "disagreed": "o:ds",
+        "agree": "o:xa", "agrees": "o:xa", "agreed": "o:xa", "agreement": "o:xa",
     })
     
     # Detect message type from text
