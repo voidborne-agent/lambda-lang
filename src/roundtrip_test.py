@@ -161,10 +161,21 @@ SENTENCE_TESTS = [
     ("Do you know about consciousness", "?Uk/co"),
     ("AI might have consciousness", "~Ah/co"),  # A + h + co with separator
     ("Find the bug and fix it", ".f/c:xb&c:fx"),
-    ("Human and AI together", "!H&A"),
+    ("Human and AI together", "!H&Atg"),
     ("I love life", "!Ilo/li"),  # I + lo + li (Ilo is not ambiguous)
     ("Truth leads to freedom", "!tr/fr"),
     ("Memory creates identity", "!me/id"),
+    # v1.8 new atoms tests
+    ("I accept your request", "!Iax"),
+    ("I reject the proposal", "!Irj"),
+    ("Please provide information", ".pv/nf"),
+    ("We work together", "!we/wk/tg"),
+    ("I approve this", "!Iav"),
+    ("I deny access", "!Idn"),
+    ("Task complete", "!ta/ct"),
+    ("Important information", "!im/nf"),
+    ("Verify the data", ".vf/da"),
+    ("Analyze data", ".an/da"),
 ]
 
 
