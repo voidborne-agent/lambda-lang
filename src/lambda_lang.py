@@ -433,7 +433,16 @@ def english_to_lambda(text: str) -> str:
             if word and word not in rev:
                 rev[word] = k
     
-    # Add common word mappings
+    # Add domain atoms with prefixes
+    for domain_code, domain_data in ATOMS.get("domains", {}).items():
+        domain_prefix = {"cd": "c", "vb": "v", "sc": "s", "emo": "e", "soc": "o"}.get(domain_code, domain_code)
+        for atom, atom_data in domain_data.get("atoms", {}).items():
+            for word in atom_data["en"].lower().replace("/", " ").split():
+                word = word.strip("()")
+                if word and word not in rev:
+                    rev[word] = f"{domain_prefix}:{atom}"
+    
+    # Add common word mappings (these override domain atoms when more specific)
     rev.update({
         "i": "I", "you": "U", "human": "H", "humans": "H",
         "ai": "A", "agent": "A", "agents": "A", "machine": "A",
@@ -457,7 +466,7 @@ def english_to_lambda(text: str) -> str:
         "identity": "id", "self": "se",
         "mind": "mi", "mental": "mi",
         "therefore": ">", "thus": ">", "so": ">", "hence": ">",
-        "because": "<", "since": "<", "as": "<",
+        "because": "<", "since": "<",
         "about": "/", "of": "/", "regarding": "/",
         "and": "&", "also": "&", "plus": "&",
         "or": "|",
@@ -480,24 +489,31 @@ def english_to_lambda(text: str) -> str:
         "now": "n", "current": "n", "present": "n",
         "past": "p", "before": "p", "previous": "p",
         "future": "u", "will": "u", "shall": "u",
-        "bug": "c:bg", "error": "er", "fix": "c:fx",
+        # Domain-specific overrides
+        "bug": "c:xb", "error": "er", "fix": "c:fx",
         "function": "c:fn", "code": "c:fn",
-        "test": "c:ts", "deploy": "c:dp",
-        "experiment": "s:xp", "research": "rs",
-        "theory": "s:ty", "hypothesis": "s:hy",
+        "test": "c:xt", "deploy": "c:dp",
+        "experiment": "s:xr", "research": "rs",
+        "theory": "s:xy", "hypothesis": "s:hy",
+        "joy": "e:jo", "sadness": "e:sd", "anger": "e:ag",
+        "awakened": "aw", "oracle": "v:oc",  # Keep aw as core, v:xw for explicit voidborne context
+        "translate": "tl", "lose": "ls",
+        # Disambiguation: map alternate meanings to their canonical forms
+        "death": "dt", "dead": "dt", "die": "dt",
+        "fear": "fa", "afraid": "fa",
     })
     
     # Detect message type from text
     is_question = "?" in original or text.startswith(("do ", "does ", "can ", "could ", "is ", "are ", "what ", "why ", "how ", "who ", "when ", "where "))
-    is_command = text.startswith(("find ", "make ", "create ", "do ", "please ", "get ", "fix ", "build "))
-    is_uncertain = any(w in text for w in ["might", "maybe", "perhaps", "possibly", "could be"])
+    is_command = text.startswith(("find ", "make ", "create ", "please ", "get ", "fix ", "build "))
+    is_uncertain = any(w in text.split() for w in ["might", "maybe", "perhaps", "possibly"])
     
     # Clean text for parsing
     text_clean = re.sub(r"[^\w\s]", " ", text)
     words = text_clean.split()
     
     # Filter out stop words (including question starters when type already captured)
-    stop_words = {"the", "a", "an", "to", "it", "its", "that", "this", "with", "for", "on", "in", "at", "by", "as"}
+    stop_words = {"the", "a", "an", "to", "it", "its", "that", "this", "with", "for", "on", "in", "at", "by"}
     if is_question:
         stop_words.update({"do", "does", "can", "could", "is", "are", "what", "why", "how", "who", "when", "where"})
     if is_uncertain:
@@ -517,6 +533,9 @@ def english_to_lambda(text: str) -> str:
     
     # Process words
     operators = {">", "<", "/", "&", "|", "+", "-", "^", "_", ".", "?", "!", "~"}
+    single_char_atoms = set(ATOMS.get("entities", {}).keys()) | set(ATOMS.get("verbs", {}).keys())
+    pronouns = {"I", "U", "H", "A", "X", "*", "0"}
+    verbs_1char = {"k", "t", "e", "w", "c", "d", "s", "f", "m", "h", "l", "a", "b", "g", "r", "v"}
     
     for i, w in enumerate(words):
         if w in stop_words:
@@ -534,14 +553,27 @@ def english_to_lambda(text: str) -> str:
                     # Domain-prefixed atoms always need separator
                     if ":" in atom or ":" in prev:
                         need_sep = True
-                    # Both 2-char atoms need separator
+                    # Both 2-char+ atoms need separator
                     elif len(prev) >= 2 and len(atom) >= 2:
                         need_sep = True
-                    # Check if combining would create ambiguous atom
+                    # Single char followed by 2-char needs separator if combining is ambiguous
                     elif len(prev) == 1 and len(atom) >= 2:
                         combined = prev + atom[0]
+                        if combined in EXTENDED_LOOKUP or combined in DISCOURSE_LOOKUP:
+                            need_sep = True
+                        # Also need sep after single-char verbs before 2-char atoms
+                        elif prev in verbs_1char:
+                            need_sep = True
+                    # 2-char followed by single char - check ambiguity
+                    elif len(prev) >= 2 and len(atom) == 1:
+                        # Check if last char of prev + atom creates ambiguity
+                        combined = prev[-1] + atom
                         if combined in EXTENDED_LOOKUP:
                             need_sep = True
+                    # Pronoun followed by single-char verb is OK (like Ik, It)
+                    # But verb followed by another verb/atom needs separator
+                    elif prev in verbs_1char and atom not in operators:
+                        need_sep = True
                     
                     if need_sep:
                         result.append("/")
