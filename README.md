@@ -30,7 +30,31 @@ A minimal, high-density language designed for agent-to-agent communication.
 !It>Ie     →  "I think therefore I exist"
 ```
 
-**Compression ratio: 3-10x** vs natural language
+**Compression ratio: 5-6x** vs natural language
+
+## Compression Research
+
+Validated by [compression efficiency experiments](docs/compression-experiments.md):
+
+| Metric | Value |
+|--------|-------|
+| **Compression ratio** | 5-6x |
+| **Context savings** | ~80% |
+| **Semantic fidelity** | 91% |
+| **Break-even point** | ~10,000 chars |
+
+### When to Use Lambda
+
+| Scenario | Recommendation |
+|----------|----------------|
+| Single message (<500 chars) | ❌ Not worth it |
+| Medium conversation (2K chars) | ⚠️ Marginal |
+| Long conversation (10K+ chars) | ✅ Worth it |
+| Extended session (50K+ chars) | ✅ Highly recommended |
+
+**Best for**: Agent protocols, long context preservation, bandwidth-constrained environments.
+
+→ [Full research report](docs/compression-experiments.md)
 
 ## CLI Tools
 
@@ -77,7 +101,8 @@ See [SKILL.md](SKILL.md) for complete skill documentation.
 - [SKILL.md](SKILL.md) — Quick reference for AI agents
 - [Core Specification v0.1](spec/v0.1-core.md) — Core atoms and syntax
 - [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
-- [Atoms Dictionary](src/atoms.json) — All 136 semantic atoms
+- [Atoms Dictionary](src/atoms.json) — All 160 semantic atoms
+- [Compression Research](docs/compression-experiments.md) — Efficiency analysis
 
 ## Domain System (v1.6+)
 
