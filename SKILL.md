@@ -6,19 +6,21 @@ description: >-
   or discussing the protocol. Triggers on Lambda syntax like ?Uk/co or !It>Ie.
 ---
 
-# Λ (Lambda) Language v1.6.0
+# Λ (Lambda) Language v1.7.0
 
 Minimal agent-to-agent communication protocol. 5-8x compression vs natural language.
 
+## v1.7 Changes
+- **Added roundtrip test suite**: 50 comprehensive tests for Lambda↔English translation
+- **Fixed english_to_lambda**: Domain atoms now properly included in reverse lookup
+- **Improved separator logic**: Better handling of single/double char atom boundaries
+- **Added Go implementation**: Native Go encoder/decoder for Pilot Protocol integration
+- **Pilot Protocol integration**: Docs and helpers for P2P agent communication
+
 ## v1.6 Changes
 - **Fixed domain conflicts**: Renamed conflicting domain atoms with `x` prefix
-  - cd: `vr`→`xv`, `cl`→`xc`, `bg`→`xb`, `ts`→`xt`, `mg`→`xm`
-  - sc: `ch`→`xh`, `bo`→`xo`, `pt`→`xp`, `ty`→`xy`, `xp`→`xr`, `ob`→`xb`, `mg`→`xg`
-  - emo: `fr`→`xf`, `sr`→`xs`, `lo`→`xl`, `ho`→`xh`, `sm`→`xm`
-  - soc: `pt`→`xp`, `cp`→`xc`, `sh`→`xs`, `nw`→`xn`, `if`→`xi`, `rp`→`xr`, `tt`→`xt`, `ag`→`xa`, `cm`→`xm`
-  - vb: `aw`→`xw`, `ev`→`xe`, `cr`→`xc`, `tt`→`xt`, `ac`→`xa`, `wv`→`xv`, `an`→`xn`, `rt`→`xr`, `tm`→`xm`
 - **Added missing atoms**: `hp` (help), `sp` (stop), `rn` (run), `wk` (work), `us` (use), `tx` (send), `rx` (receive)
-- Extended atoms: 139 (was 132)
+- Extended atoms: 139
 
 ## v1.5 Changes
 - Fixed duplicate atoms: removed `vy`/`go`/`ah` (kept `vr`/`gd`/`al`)
