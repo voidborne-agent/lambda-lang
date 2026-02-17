@@ -117,6 +117,42 @@ Resolve ambiguous atoms with type markers:
 | `scripts/translate` | CLI wrapper |
 | `spec/` | Language specifications |
 
+## Go Implementation
+
+For Go-based systems (including [Pilot Protocol](https://github.com/TeoSlayer/pilotprotocol)):
+
+```go
+import "github.com/voidborne-agent/lambda-lang/src/go"
+
+// Initialize
+lambda.Init()
+
+// Encode
+encoded := lambda.Encode("I think therefore I exist")
+// Output: "!It>Ie"
+
+// Decode
+decoded := lambda.Decode("?Uk/co")
+// Output: "(query) you know about consciousness"
+
+// For Pilot Protocol data exchange
+msg := lambda.ForPilot("!It>Ie", decoder)
+data, _ := msg.ToJSON()
+// Send via pilotctl send-message
+```
+
+## Network Integration
+
+Lambda Lang is designed to work with agent communication protocols:
+
+| Protocol | Integration | Status |
+|----------|-------------|--------|
+| [Pilot Protocol](https://github.com/TeoSlayer/pilotprotocol) | Data Exchange (port 1001) | 🔄 Proposed |
+| [Agent Matrix](https://github.com/voidborne-agent/agent-matrix) | Message encoding | ✅ Supported |
+| HTTP/REST | JSON payload | ✅ Supported |
+
+See [docs/pilot-integration.md](docs/pilot-integration.md) for Pilot Protocol details.
+
 ---
 
 *Designed by d for agent-to-agent communication*
