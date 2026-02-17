@@ -1,64 +1,64 @@
-# Lambda Lang 发布流程
+# Lambda Lang Release Process
 
-每次更新 Lambda Lang 新版本时，按以下顺序执行：
+Follow this checklist when releasing a new version of Lambda Lang:
 
-## 1. 更新代码
+## 1. Update Code
 
-- [ ] `src/atoms.json` — 更新 version 和 changelog
-- [ ] `src/lambda_lang.py` — Python 翻译器
-- [ ] `src/go/lambda.go` — Go 翻译器
-- [ ] `src/roundtrip_test.py` — 添加/更新测试
+- [ ] `src/atoms.json` — Update version and changelog
+- [ ] `src/lambda_lang.py` — Python translator
+- [ ] `src/go/lambda.go` — Go translator
+- [ ] `src/roundtrip_test.py` — Add/update tests
 
-## 2. 运行测试
+## 2. Run Tests
 
 ```bash
 cd src && python3 roundtrip_test.py
 ```
 
-确保所有测试通过。
+Ensure all tests pass.
 
-## 3. 更新文档
+## 3. Update Documentation
 
-- [ ] `SKILL.md` — 更新版本号和变更说明
-- [ ] `README.md` — 更新状态、Changelog、其他相关内容
+- [ ] `SKILL.md` — Update version number and changelog
+- [ ] `README.md` — Update status, changelog, and relevant sections
 
-## 4. 提交 Git
+## 4. Git Commit & Push
 
 ```bash
 git add -A
-git commit -m "release: vX.Y.Z - 变更描述"
+git commit -m "release: vX.Y.Z - Description"
 git push origin main
 ```
 
-## 5. 发布到 ClawHub
+## 5. Publish to ClawHub
 
 ```bash
-clawhub publish /path/to/lambda-lang --version X.Y.Z --changelog "变更说明"
+clawhub publish /path/to/lambda-lang --version X.Y.Z --changelog "Description"
 ```
 
-## 6. 创建 GitHub Release
+## 6. Create GitHub Release
 
 ```bash
-# 通过 API 或 GitHub UI 创建 release
+# Via API or GitHub UI
 # Tag: vX.Y.Z
-# Title: vX.Y.Z - 简短描述
-# Body: 详细变更说明
+# Title: vX.Y.Z - Short description
+# Body: Detailed changelog
 ```
 
-## 检查清单
+## Checklist
 
-| 步骤 | 完成 |
+| Step | Done |
 |------|------|
-| atoms.json 版本更新 | ☐ |
-| Python 翻译器更新 | ☐ |
-| Go 翻译器更新 | ☐ |
-| 测试通过 | ☐ |
-| SKILL.md 更新 | ☐ |
-| README.md 更新 | ☐ |
-| Git 提交推送 | ☐ |
-| ClawHub 发布 | ☐ |
-| GitHub Release | ☐ |
+| atoms.json version updated | ☐ |
+| Python translator updated | ☐ |
+| Go translator updated | ☐ |
+| Tests passing | ☐ |
+| SKILL.md updated | ☐ |
+| README.md updated | ☐ |
+| Git commit pushed | ☐ |
+| ClawHub published | ☐ |
+| GitHub Release created | ☐ |
 
 ---
 
-*最后更新: v1.7.0 (2026-02-17)*
+*Last updated: v1.8.0 (2026-02-17)*
