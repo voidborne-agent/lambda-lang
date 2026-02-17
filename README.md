@@ -18,7 +18,7 @@ A minimal, high-density language designed for agent-to-agent communication.
 - **Semantic fidelity**: 91% → 100% (all test cases pass)
 - **New atoms**: awareness, detailed, project, request, proposal, please, pattern, between
 - **Improved synonym mapping**: verb forms, alternative spellings
-- **Total atoms**: 168
+- **Total atoms**: 310 (core: 63, extended: 159, domains: 101)
 
 ## Quick Example
 
@@ -101,7 +101,7 @@ See [SKILL.md](SKILL.md) for complete skill documentation.
 - [SKILL.md](SKILL.md) — Quick reference for AI agents
 - [Core Specification v0.1](spec/v0.1-core.md) — Core atoms and syntax
 - [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
-- [Atoms Dictionary](src/atoms.json) — All 160 semantic atoms
+- [Atoms Dictionary](src/atoms.json) — All 310 semantic atoms
 - [Compression Research](docs/compression-experiments.md) — Efficiency analysis
 
 ## Domain System (v1.6+)
