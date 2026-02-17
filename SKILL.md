@@ -6,9 +6,18 @@ description: >-
   or discussing the protocol. Triggers on Lambda syntax like ?Uk/co or !It>Ie.
 ---
 
-# Λ (Lambda) Language v1.7.0
+# Λ (Lambda) Language v1.8.0
 
 Minimal agent-to-agent communication protocol. 5-8x compression vs natural language.
+
+## v1.8 Changes
+- **Added critical atoms**: `ax` (accept), `rj` (reject), `pv` (provide), `nf` (information), `tg` (together)
+- **Added workflow atoms**: `av` (approve), `dn` (deny), `fi` (finish), `ct` (complete)
+- **Added quality atoms**: `es` (essential), `im` (important), `cc` (critical)
+- **Added security atoms**: `vf` (verify), `au` (authenticate), `sc` (secure)
+- **Added analysis atoms**: `dt` (detect), `as` (assess), `ev` (evaluate), `an` (analyze)
+- **Semantic fidelity**: 72% → 91% (compression experiments validated)
+- Extended atoms: 160
 
 ## v1.7 Changes
 - **Added roundtrip test suite**: 50 comprehensive tests for Lambda↔English translation
