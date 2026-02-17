@@ -1,6 +1,7 @@
 {
-  "version": "1.7",
+  "version": "1.8",
   "changelog": {
+    "1.8": "Added missing atoms: accept, reject, provide, information, together, approve, deny, finish, complete, essential, important, critical",
     "1.7": "Added roundtrip tests, fixed english_to_lambda domain lookup, improved separator logic, added Go implementation",
     "1.6": "Fixed domain conflicts, added missing atoms (hp/st/rn/wk/us/tx/rx), renamed conflicting domain atoms",
     "1.5": "Fixed duplicate atoms, removed vb conflict",
@@ -226,7 +227,26 @@
     "wk": {"en": "work"},
     "us": {"en": "use"},
     "tx": {"en": "send/transmit"},
-    "rx": {"en": "receive"}
+    "rx": {"en": "receive"},
+    "ax": {"en": "accept"},
+    "rj": {"en": "reject"},
+    "pv": {"en": "provide"},
+    "nf": {"en": "information"},
+    "tg": {"en": "together"},
+    "av": {"en": "approve"},
+    "dn": {"en": "deny"},
+    "fi": {"en": "finish"},
+    "ct": {"en": "complete"},
+    "es": {"en": "essential"},
+    "im": {"en": "important"},
+    "cc": {"en": "critical"},
+    "vf": {"en": "verify"},
+    "au": {"en": "authenticate"},
+    "sc": {"en": "secure"},
+    "dt": {"en": "detect"},
+    "as": {"en": "assess"},
+    "ev": {"en": "evaluate"},
+    "an": {"en": "analyze"}
   },
   "domains": {
     "cd": {

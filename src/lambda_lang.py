@@ -501,6 +501,26 @@ def english_to_lambda(text: str) -> str:
         # Disambiguation: map alternate meanings to their canonical forms
         "death": "dt", "dead": "dt", "die": "dt",
         "fear": "fa", "afraid": "fa",
+        # v1.8 additions
+        "accept": "ax", "accepts": "ax", "accepted": "ax", "accepting": "ax",
+        "reject": "rj", "rejects": "rj", "rejected": "rj", "rejecting": "rj",
+        "provide": "pv", "provides": "pv", "provided": "pv", "providing": "pv",
+        "information": "nf", "info": "nf",
+        "together": "tg",
+        "approve": "av", "approves": "av", "approved": "av", "approving": "av",
+        "deny": "dn", "denies": "dn", "denied": "dn", "denying": "dn",
+        "finish": "fi", "finishes": "fi", "finished": "fi", "finishing": "fi",
+        "complete": "ct", "completes": "ct", "completed": "ct", "completing": "ct",
+        "essential": "es",
+        "important": "im", "importance": "im",
+        "critical": "cc", "crucial": "cc",
+        "verify": "vf", "verifies": "vf", "verified": "vf", "verifying": "vf",
+        "authenticate": "au", "authentication": "au",
+        "secure": "sc", "security": "sc",
+        "detect": "dt", "detects": "dt", "detected": "dt", "detecting": "dt",
+        "assess": "as", "assesses": "as", "assessed": "as", "assessing": "as",
+        "evaluate": "ev", "evaluates": "ev", "evaluated": "ev", "evaluating": "ev",
+        "analyze": "an", "analyzes": "an", "analyzed": "an", "analyzing": "an", "analysis": "an",
     })
     
     # Detect message type from text
