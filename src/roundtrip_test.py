@@ -166,9 +166,9 @@ SENTENCE_TESTS = [
     ("Truth leads to freedom", "!tr/fr"),
     ("Memory creates identity", "!me/id"),
     # v1.8 new atoms tests
-    ("I accept your request", "!Iax"),
-    ("I reject the proposal", "!Irj"),
-    ("Please provide information", ".pv/nf"),
+    ("I accept your request", "!Iax/rq"),
+    ("I reject the proposal", "!Irj/pp"),
+    ("Please provide information", ".pl/pv/nf"),
     ("We work together", "!we/wk/tg"),
     ("I approve this", "!Iav"),
     ("I deny access", "!Idn"),

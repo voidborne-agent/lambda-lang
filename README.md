@@ -12,13 +12,13 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 ## Status
 
-✅ **v1.8.0 Stable** — Critical atoms added, 91% semantic fidelity, 160 atoms
+✅ **v1.8.1 Stable** — 100% semantic fidelity, 168 atoms
 
-### v1.8.0 Highlights
-- **New atoms**: accept, reject, approve, deny, provide, information, together, finish, complete
-- **Quality atoms**: essential, important, critical
-- **Security atoms**: verify, authenticate, secure, detect, assess, evaluate, analyze
-- **Semantic fidelity**: 72% → 91% (validated by compression experiments)
+### v1.8.1 Highlights
+- **Semantic fidelity**: 91% → 100% (all test cases pass)
+- **New atoms**: awareness, detailed, project, request, proposal, please, pattern, between
+- **Improved synonym mapping**: verb forms, alternative spellings
+- **Total atoms**: 168
 
 ## Quick Example
 
@@ -40,7 +40,7 @@ Validated by [compression efficiency experiments](docs/compression-experiments.m
 |--------|-------|
 | **Compression ratio** | 5-6x |
 | **Context savings** | ~80% |
-| **Semantic fidelity** | 91% |
+| **Semantic fidelity** | 100% |
 | **Break-even point** | ~10,000 chars |
 
 ### When to Use Lambda

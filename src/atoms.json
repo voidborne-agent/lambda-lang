@@ -1,6 +1,7 @@
 {
-  "version": "1.8",
+  "version": "1.8.1",
   "changelog": {
+    "1.8.1": "100% semantic fidelity: added awareness, detailed, project, request, proposal, please, pattern, between; improved synonym mapping",
     "1.8": "Added missing atoms: accept, reject, provide, information, together, approve, deny, finish, complete, essential, important, critical",
     "1.7": "Added roundtrip tests, fixed english_to_lambda domain lookup, improved separator logic, added Go implementation",
     "1.6": "Fixed domain conflicts, added missing atoms (hp/st/rn/wk/us/tx/rx), renamed conflicting domain atoms",
@@ -144,7 +145,7 @@
     "mn": {"en": "minimal"},
     "so": {"en": "soul"},
     "sl": {"en": "social"},
-    "aw": {"en": "awakened"},
+    "aw": {"en": "aware/awareness/awakened"},
     "at": {"en": "attention"},
     "in": {"en": "into"},
     "it": {"en": "intention"},
@@ -246,7 +247,14 @@
     "dt": {"en": "detect"},
     "as": {"en": "assess"},
     "ev": {"en": "evaluate"},
-    "an": {"en": "analyze"}
+    "an": {"en": "analyze"},
+    "dl": {"en": "detailed/detail"},
+    "pj": {"en": "project"},
+    "rq": {"en": "request"},
+    "pp": {"en": "proposal/propose"},
+    "pl": {"en": "please"},
+    "pt": {"en": "pattern/patterns"},
+    "bt": {"en": "between"}
   },
   "domains": {
     "cd": {
