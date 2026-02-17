@@ -1,6 +1,7 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "changelog": {
+    "1.7": "Added roundtrip tests, fixed english_to_lambda domain lookup, improved separator logic, added Go implementation",
     "1.6": "Fixed domain conflicts, added missing atoms (hp/st/rn/wk/us/tx/rx), renamed conflicting domain atoms",
     "1.5": "Fixed duplicate atoms, removed vb conflict",
     "1.4": "Added disambiguation, domain prefixes"
