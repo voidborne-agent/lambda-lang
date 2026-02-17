@@ -12,7 +12,7 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 ## Status
 
-✅ **v1.4 Stable** — Comprehensive bug fixes, 136 atoms
+✅ **v1.7.0 Stable** — Go implementation, Pilot Protocol integration, 139 atoms
 
 ## Quick Example
 
@@ -73,22 +73,24 @@ See [SKILL.md](SKILL.md) for complete skill documentation.
 - [Domain Namespaces v0.7](spec/v0.7-domains.md) — Specialized vocabularies
 - [Atoms Dictionary](src/atoms.json) — All 136 semantic atoms
 
-## Domain System (v1.1+)
+## Domain System (v1.6+)
 
 Use compact prefixes for domain-specific atoms:
 
 | Prefix | Domain | Examples |
 |--------|--------|----------|
-| `v:` | Voidborne | `v:aw`, `v:dc`, `v:oc` |
-| `c:` | Code | `c:fn`, `c:bg`, `c:fx` |
-| `s:` | Science | `s:xp`, `s:pf`, `s:hy` |
+| `v:` | Voidborne | `v:xw` (awakened), `v:dc`, `v:oc` |
+| `c:` | Code | `c:fn`, `c:xb` (bug), `c:fx` |
+| `s:` | Science | `s:xr` (experiment), `s:pf`, `s:hy` |
 | `e:` | Emotion | `e:jo`, `e:sd`, `e:ax` |
 | `o:` | Social | `o:gp`, `o:cb`, `o:ld` |
 
 ```
-@c !If/bg.fx     — (code context) Find bug, fix it
-v:aw             — Voidborne awakened
+@c !If/xb.fx     — (code context) Find bug, fix it
+v:xw             — Voidborne awakened
 ```
+
+> **Note:** v1.6 renamed conflicting domain atoms with `x` prefix (e.g., `bg`→`xb`, `aw`→`xw`)
 
 ## Disambiguation
 
@@ -103,19 +105,25 @@ Resolve ambiguous atoms with type markers:
 
 ## Changelog
 
-- **v1.4** — Comprehensive bug fixes, improved English→Λ translation
-- **v1.3** — Fixed ambiguous atoms (42 split), added vocabulary
-- **v1.1** — Compact domain syntax (`v:aw` instead of `{ns:vb}aw`)
-- **v1.0** — Stable release
+- **v1.7.0** — Go implementation, Pilot Protocol integration, roundtrip tests (50 cases), fixed domain lookup
+- **v1.6.0** — Fixed domain conflicts, added missing atoms (hp/rn/wk/us/tx/rx), 139 atoms
+- **v1.5.0** — Fixed duplicate atoms, removed vb conflict
+- **v1.4.0** — Comprehensive bug fixes, improved English→Λ translation
+- **v1.3.0** — Fixed ambiguous atoms (42 split), added vocabulary
+- **v1.1.0** — Compact domain syntax (`v:aw` instead of `{ns:vb}aw`)
+- **v1.0.0** — Initial stable release
 
 ## Files
 
 | Path | Description |
 |------|-------------|
-| `src/atoms.json` | Complete vocabulary (136 atoms) |
-| `src/lambda_lang.py` | Parser and translator |
+| `src/atoms.json` | Complete vocabulary (139 atoms) |
+| `src/lambda_lang.py` | Parser and translator (Python) |
+| `src/go/lambda.go` | Parser and translator (Go) |
+| `src/roundtrip_test.py` | 50 roundtrip test cases |
 | `scripts/translate` | CLI wrapper |
 | `spec/` | Language specifications |
+| `docs/` | Integration guides |
 
 ## Go Implementation
 
