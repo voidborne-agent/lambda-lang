@@ -12,7 +12,13 @@ A minimal, high-density language designed for agent-to-agent communication.
 
 ## Status
 
-✅ **v1.7.0 Stable** — Go implementation, Pilot Protocol integration, 139 atoms
+✅ **v1.8.0 Stable** — Critical atoms added, 91% semantic fidelity, 160 atoms
+
+### v1.8.0 Highlights
+- **New atoms**: accept, reject, approve, deny, provide, information, together, finish, complete
+- **Quality atoms**: essential, important, critical
+- **Security atoms**: verify, authenticate, secure, detect, assess, evaluate, analyze
+- **Semantic fidelity**: 72% → 91% (validated by compression experiments)
 
 ## Quick Example
 

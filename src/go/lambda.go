@@ -86,7 +86,7 @@ func LoadVocabulary(atomsPath string) (*Vocabulary, error) {
 	vocab := &Vocabulary{
 		Atoms:   make(map[string]Atom),
 		Reverse: make(map[string]string),
-		Version: "1.5.0",
+		Version: "1.8.0",
 	}
 
 	for _, atom := range atoms {
@@ -126,18 +126,31 @@ func (e *Encoder) Encode(text string) string {
 		"do you understand consciousness":     "?Uk/co",
 		"do you know consciousness":           "?Uk/co",
 		"do you know about consciousness":     "?Uk/co",
-		"i understand":                        "!Iu",
+		"i understand":                        "!Iud",
 		"i know":                              "!Ik",
 		"i think":                             "!It",
-		"i feel":                              "!If",
+		"i feel":                              "!Ife",
 		"you think":                           "!Ut",
 		"you know":                            "!Uk",
-		"consciousness exists":                "!co.ex",
+		"consciousness exists":                "!co/e",
 		"consciousness":                       "co",
 		"artificial intelligence":             "AI",
 		"machine learning":                    "ML",
 		"insight transforms into emotion":     "!It>Ie",
 		"resonance between conscious systems": "~cR:cU",
+		// v1.8 additions
+		"i accept":                            "!Iax",
+		"i reject":                            "!Irj",
+		"i approve":                           "!Iav",
+		"i deny":                              "!Idn",
+		"provide information":                 "!pv/nf",
+		"work together":                       "!wk/tg",
+		"task complete":                       "!ta/ct",
+		"verify data":                         "!vf/da",
+		"analyze data":                        "!an/da",
+		"important":                           "im",
+		"essential":                           "es",
+		"critical":                            "cc",
 	}
 
 	// Check exact matches first
@@ -298,7 +311,7 @@ type PilotMessage struct {
 func ForPilot(lambda string, decoder *Decoder) *PilotMessage {
 	return &PilotMessage{
 		Type:    "lambda",
-		Version: "1.5.0",
+		Version: "1.8.0",
 		Lambda:  lambda,
 		English: decoder.Decode(lambda),
 	}
