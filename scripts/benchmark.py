@@ -470,5 +470,213 @@ def run_benchmark():
     return output
 
 
+# ============================================================
+# Long-context benchmark
+# ============================================================
+
+CONVERSATIONS = {
+    "task_orchestration": {
+        "description": "50-message task dispatch and monitoring conversation",
+        "messages": [
+            # Manager dispatches
+            {"nl": "Agent B, start task alpha, priority high", "lm": ".A bg ta id=alpha ^", "json": '{"action":"start","agent":"B","task":"alpha","priority":"high"}'},
+            {"nl": "Acknowledged, starting task alpha now", "lm": "!ak bg ta id=alpha n", "json": '{"type":"ack","task":"alpha","action":"start","time":"now"}'},
+            {"nl": "Task alpha status: running, 10% complete", "lm": "!ta id=alpha st=rn $10 ct", "json": '{"task":"alpha","status":"running","progress":10}'},
+            {"nl": "Task alpha status: running, 25% complete", "lm": "!ta id=alpha st=rn $25 ct", "json": '{"task":"alpha","status":"running","progress":25}'},
+            {"nl": "Task alpha status: running, 50% complete", "lm": "!ta id=alpha st=rn $50 ct", "json": '{"task":"alpha","status":"running","progress":50}'},
+            {"nl": "Warning: task alpha memory usage is high", "lm": "~ta id=alpha me us ^", "json": '{"type":"warning","task":"alpha","metric":"memory","level":"high"}'},
+            {"nl": "Task alpha status: running, 75% complete", "lm": "!ta id=alpha st=rn $75 ct", "json": '{"task":"alpha","status":"running","progress":75}'},
+            {"nl": "Task alpha completed successfully, result ready", "lm": "!ta id=alpha ct ok re=ok", "json": '{"task":"alpha","status":"completed","success":true,"result":"ready"}'},
+            {"nl": "Send result of task alpha to Agent C", "lm": ".tx re/ta id=alpha>A", "json": '{"action":"send","data":"result","task":"alpha","to":"C"}'},
+            {"nl": "Agent C acknowledged receipt of result", "lm": "!A ak rx re", "json": '{"type":"ack","agent":"C","received":"result"}'},
+            # Second task
+            {"nl": "Agent B, start task beta, priority normal", "lm": ".A bg ta id=beta", "json": '{"action":"start","agent":"B","task":"beta","priority":"normal"}'},
+            {"nl": "Task beta status: running", "lm": "!ta id=beta st=rn", "json": '{"task":"beta","status":"running"}'},
+            {"nl": "Error in task beta: config file missing", "lm": "!ta id=beta er cg-", "json": '{"task":"beta","status":"error","error":"config_missing"}'},
+            {"nl": "Retry task beta with updated config", "lm": ".ry ta id=beta cg ch", "json": '{"action":"retry","task":"beta","config":"updated"}'},
+            {"nl": "Task beta status: running after retry", "lm": "!ta id=beta st=rn<ry", "json": '{"task":"beta","status":"running","after":"retry"}'},
+            {"nl": "Task beta completed successfully", "lm": "!ta id=beta ct ok", "json": '{"task":"beta","status":"completed","success":true}'},
+            # Third task with failure
+            {"nl": "Start task gamma, depends on alpha result", "lm": ".bg ta id=gamma<re/ta id=alpha", "json": '{"action":"start","task":"gamma","depends_on":{"task":"alpha","field":"result"}}'},
+            {"nl": "Task gamma status: running", "lm": "!ta id=gamma st=rn", "json": '{"task":"gamma","status":"running"}'},
+            {"nl": "Task gamma failed with timeout error", "lm": "!ta id=gamma er a:to", "json": '{"task":"gamma","status":"failed","error":"timeout"}'},
+            {"nl": "Rollback task gamma changes", "lm": ".e:rb ta id=gamma ch", "json": '{"action":"rollback","task":"gamma","scope":"changes"}'},
+            # Health checks interspersed
+            {"nl": "Node heartbeat OK", "lm": "!nd hb ok", "json": '{"type":"heartbeat","status":"ok"}'},
+            {"nl": "Node heartbeat OK", "lm": "!nd hb ok", "json": '{"type":"heartbeat","status":"ok"}'},
+            {"nl": "System status: all tasks accounted for", "lm": "!sy st ok *ta", "json": '{"type":"system_status","status":"ok","scope":"all_tasks"}'},
+            {"nl": "Node heartbeat OK", "lm": "!nd hb ok", "json": '{"type":"heartbeat","status":"ok"}'},
+            {"nl": "Session memory usage: 4.2 gigabytes", "lm": "!ss me us=$4.2", "json": '{"type":"session","metric":"memory","value":"4.2GB"}'},
+            # More tasks
+            {"nl": "Start task delta, low priority", "lm": ".bg ta id=delta _", "json": '{"action":"start","task":"delta","priority":"low"}'},
+            {"nl": "Task delta status: waiting in queue", "lm": "!ta id=delta st=wa qe", "json": '{"task":"delta","status":"waiting","location":"queue"}'},
+            {"nl": "Task delta status: running", "lm": "!ta id=delta st=rn", "json": '{"task":"delta","status":"running"}'},
+            {"nl": "Task delta completed, result is a list of 42 items", "lm": "!ta id=delta ct re=$42", "json": '{"task":"delta","status":"completed","result":{"type":"list","count":42}}'},
+            {"nl": "Log all task results to file", "lm": ".lg *ta re", "json": '{"action":"log","scope":"all_tasks","field":"results","target":"file"}'},
+            # Summary
+            {"nl": "Query: how many tasks completed successfully?", "lm": "?$ta ct ok", "json": '{"action":"query","filter":{"status":"completed","success":true},"return":"count"}'},
+            {"nl": "3 tasks completed, 1 failed", "lm": "!$3 ta ct ok $1 ta er", "json": '{"completed":3,"failed":1}'},
+            {"nl": "Create summary report of all results", "lm": ".cr re/*ta", "json": '{"action":"create","type":"summary","scope":"all_task_results"}'},
+            {"nl": "Report created and saved", "lm": "!re cr ok", "json": '{"type":"report","status":"created","saved":true}'},
+            {"nl": "Send report to Agent A", "lm": ".tx re>A", "json": '{"action":"send","data":"report","to":"A"}'},
+            # Cleanup
+            {"nl": "Close session, archive all logs", "lm": ".cl ss lg", "json": '{"action":"close","target":"session","archive":"logs"}'},
+            {"nl": "Session closed, goodbye", "lm": "!ss cl ok", "json": '{"type":"session","status":"closed","message":"goodbye"}'},
+            {"nl": "Node heartbeat OK, shutting down", "lm": "!nd hb ok sp", "json": '{"type":"heartbeat","status":"ok","next":"shutdown"}'},
+        ],
+    },
+    "evolution_cycle": {
+        "description": "30-message evolution cycle with A2A exchange",
+        "messages": [
+            {"nl": "Evolution cycle 42 starting, strategy: innovate", "lm": "!e:cy $42 bg e:sy=e:iv", "json": '{"type":"cycle","id":42,"action":"start","strategy":"innovate"}'},
+            {"nl": "Extracting signals from session transcript", "lm": ".f sg<ss lg", "json": '{"action":"extract","target":"signals","source":"session_transcript"}'},
+            {"nl": "Signals detected: stagnation, stable success plateau", "lm": "!sg dt e:sa ok+", "json": '{"type":"signals","detected":["stagnation","stable_success_plateau"]}'},
+            {"nl": "Selecting gene: gene_auto_scheduler", "lm": ".e:sl e:gn id=auto_scheduler", "json": '{"action":"select","type":"gene","id":"gene_auto_scheduler"}'},
+            {"nl": "Gene strategy: create new skill, validate, solidify", "lm": "!e:gn e:sy=cr nw>e:vl>e:sf", "json": '{"gene":"auto_scheduler","strategy":["create_skill","validate","solidify"]}'},
+            {"nl": "Mutation created: innovate category, low risk", "lm": "!e:mt cr e:iv rk _", "json": '{"type":"mutation","category":"innovate","risk":"low"}'},
+            {"nl": "Creating skill: auto-scheduler in skills directory", "lm": ".cr nw c:fn id=auto_scheduler", "json": '{"action":"create","type":"skill","name":"auto-scheduler","location":"skills/"}'},
+            {"nl": "Writing index.js with main function", "lm": ".wr c:fn id=index", "json": '{"action":"write","file":"index.js","content":"main_function"}'},
+            {"nl": "Writing SKILL.md with description", "lm": ".wr id=SKILL.md", "json": '{"action":"write","file":"SKILL.md","content":"description"}'},
+            {"nl": "Running validation: node -e require test", "lm": ".e:vl rn c:xt", "json": '{"action":"validate","command":"node -e require","type":"test"}'},
+            {"nl": "Validation passed, all exports working", "lm": "!e:vl ok *", "json": '{"validation":"passed","exports":"all_working"}'},
+            {"nl": "Solidifying: creating gene and capsule records", "lm": ".e:sf cr e:gn&e:cp", "json": '{"action":"solidify","create":["gene","capsule"]}'},
+            {"nl": "Gene updated: gene_auto_scheduler version 2", "lm": "!e:gn id=auto_scheduler ch vn=2", "json": '{"type":"gene","id":"auto_scheduler","action":"update","version":2}'},
+            {"nl": "Capsule created with confidence 0.85", "lm": "!e:cp cr e:cn=0.85", "json": '{"type":"capsule","action":"created","confidence":0.85}'},
+            {"nl": "Blast radius: 3 files, 120 lines changed", "lm": "!e:br $3 $120 ch", "json": '{"blast_radius":{"files":3,"lines":120}}'},
+            {"nl": "Capsule eligible for broadcast, streak 3", "lm": "!e:cp e:el a:bc e:sk=3", "json": '{"capsule":"eligible","broadcast":true,"streak":3}'},
+            {"nl": "Publishing capsule to hub via A2A", "lm": ".a:pb e:cp>a:nd", "json": '{"action":"publish","asset":"capsule","target":"hub","protocol":"a2a"}'},
+            {"nl": "Hub acknowledged publish, asset stored", "lm": "!a:nd ak a:pb ok", "json": '{"hub":"ack","publish":"success","stored":true}'},
+            {"nl": "Broadcasting gene to 5 peer nodes", "lm": ".a:bc e:gn>$5 nd", "json": '{"action":"broadcast","asset":"gene","peers":5}'},
+            {"nl": "Node alpha received gene, validating", "lm": "!nd id=alpha rx e:gn e:vl", "json": '{"node":"alpha","received":"gene","action":"validating"}'},
+            {"nl": "Node alpha validation passed, accepting gene", "lm": "!nd id=alpha e:vl ok ax e:gn", "json": '{"node":"alpha","validation":"passed","decision":"accept"}'},
+            {"nl": "Node beta received gene, quarantined lower confidence", "lm": "!nd id=beta rx e:gn e:qr e:cn-", "json": '{"node":"beta","received":"gene","action":"quarantine","reason":"low_confidence"}'},
+            {"nl": "Writing status report for cycle 42", "lm": ".wr st/e:cy $42", "json": '{"action":"write","type":"status","cycle":42}'},
+            {"nl": "Status: innovation successful, auto-scheduler created", "lm": "!st e:iv ok cr id=auto_scheduler", "json": '{"status":"success","intent":"innovation","created":"auto-scheduler"}'},
+            {"nl": "Evolution cycle 42 complete", "lm": "!e:cy $42 ct", "json": '{"type":"cycle","id":42,"status":"complete"}'},
+            {"nl": "Heartbeat sent to hub", "lm": ".tx hb>a:nd", "json": '{"action":"heartbeat","target":"hub"}'},
+            {"nl": "Hub heartbeat acknowledged", "lm": "!a:nd ak hb", "json": '{"hub":"ack","heartbeat":true}'},
+            {"nl": "Sleeping until next cycle trigger", "lm": ".wa>e:cy nw sg", "json": '{"action":"sleep","until":"next_cycle","trigger":"signal"}'},
+        ],
+    },
+}
+
+
+def run_long_context_benchmark():
+    print(f"\n{'=' * 80}")
+    print("LONG-CONTEXT BENCHMARK")
+    print(f"{'=' * 80}")
+    
+    use_tiktoken = False
+    try:
+        import tiktoken
+        use_tiktoken = True
+    except ImportError:
+        pass
+    
+    results = {}
+    
+    for conv_name, conv in CONVERSATIONS.items():
+        msgs = conv["messages"]
+        n = len(msgs)
+        
+        # Accumulate full conversation
+        nl_full = "\n".join(m["nl"] for m in msgs)
+        lm_full = "\n".join(m["lm"] for m in msgs)
+        js_full = "\n".join(m["json"] for m in msgs)
+        
+        nl_bytes = len(nl_full.encode('utf-8'))
+        lm_bytes = len(lm_full.encode('utf-8'))
+        js_bytes = len(js_full.encode('utf-8'))
+        
+        if use_tiktoken:
+            import tiktoken
+            enc = tiktoken.get_encoding("cl100k_base")
+            nl_tokens = len(enc.encode(nl_full))
+            lm_tokens = len(enc.encode(lm_full))
+            js_tokens = len(enc.encode(js_full))
+        else:
+            nl_tokens = count_tokens_approx(nl_full)
+            lm_tokens = count_tokens_approx(lm_full)
+            js_tokens = count_tokens_approx(js_full)
+        
+        byte_ratio_nl = nl_bytes / max(1, lm_bytes)
+        byte_ratio_json = js_bytes / max(1, lm_bytes)
+        token_ratio_nl = nl_tokens / max(1, lm_tokens)
+        token_ratio_json = js_tokens / max(1, lm_tokens)
+        
+        results[conv_name] = {
+            "messages": n,
+            "description": conv["description"],
+            "nl_bytes": nl_bytes, "lm_bytes": lm_bytes, "js_bytes": js_bytes,
+            "nl_tokens": nl_tokens, "lm_tokens": lm_tokens, "js_tokens": js_tokens,
+            "byte_ratio_nl": round(byte_ratio_nl, 2),
+            "byte_ratio_json": round(byte_ratio_json, 2),
+            "token_ratio_nl": round(token_ratio_nl, 2),
+            "token_ratio_json": round(token_ratio_json, 2),
+        }
+        
+        print(f"\n{'─' * 80}")
+        print(f"Conversation: {conv_name} — {conv['description']}")
+        print(f"Messages: {n}")
+        print(f"{'─' * 80}")
+        print(f"{'':15}{'Natural Lang':>15}{'Lambda':>15}{'JSON':>15}")
+        print(f"  {'Bytes':<12}{nl_bytes:>15,}{lm_bytes:>15,}{js_bytes:>15,}")
+        print(f"  {'Tokens':<12}{nl_tokens:>15,}{lm_tokens:>15,}{js_tokens:>15,}")
+        print()
+        print(f"  Lambda vs NL:   {byte_ratio_nl:.1f}x bytes, {token_ratio_nl:.1f}x tokens")
+        print(f"  Lambda vs JSON: {byte_ratio_json:.1f}x bytes, {token_ratio_json:.1f}x tokens")
+        
+        # Show accumulation curve (every 10 messages)
+        print(f"\n  Accumulation curve:")
+        print(f"  {'Msgs':<8}{'NL bytes':>10}{'Λ bytes':>10}{'Λ/NL':>8}{'NL tok':>10}{'Λ tok':>10}{'Λ/NL':>8}")
+        for step in range(10, n+1, 10):
+            if step > n: step = n
+            nl_part = "\n".join(m["nl"] for m in msgs[:step])
+            lm_part = "\n".join(m["lm"] for m in msgs[:step])
+            nb = len(nl_part.encode('utf-8'))
+            lb = len(lm_part.encode('utf-8'))
+            if use_tiktoken:
+                nt = len(enc.encode(nl_part))
+                lt = len(enc.encode(lm_part))
+            else:
+                nt = count_tokens_approx(nl_part)
+                lt = count_tokens_approx(lm_part)
+            print(f"  {step:<8}{nb:>10,}{lb:>10,}{nb/max(1,lb):>8.1f}{nt:>10,}{lt:>10,}{nt/max(1,lt):>8.1f}")
+        if n % 10 != 0:
+            nl_part = "\n".join(m["nl"] for m in msgs)
+            lm_part = "\n".join(m["lm"] for m in msgs)
+            nb = len(nl_part.encode('utf-8'))
+            lb = len(lm_part.encode('utf-8'))
+            if use_tiktoken:
+                nt = len(enc.encode(nl_part))
+                lt = len(enc.encode(lm_part))
+            else:
+                nt = count_tokens_approx(nl_part)
+                lt = count_tokens_approx(lm_part)
+            print(f"  {n:<8}{nb:>10,}{lb:>10,}{nb/max(1,lb):>8.1f}{nt:>10,}{lt:>10,}{nt/max(1,lt):>8.1f}")
+    
+    # Overall
+    total_nl_bytes = sum(r["nl_bytes"] for r in results.values())
+    total_lm_bytes = sum(r["lm_bytes"] for r in results.values())
+    total_js_bytes = sum(r["js_bytes"] for r in results.values())
+    total_nl_tokens = sum(r["nl_tokens"] for r in results.values())
+    total_lm_tokens = sum(r["lm_tokens"] for r in results.values())
+    total_js_tokens = sum(r["js_tokens"] for r in results.values())
+    total_msgs = sum(r["messages"] for r in results.values())
+    
+    print(f"\n{'=' * 80}")
+    print(f"LONG-CONTEXT SUMMARY ({total_msgs} messages total)")
+    print(f"{'=' * 80}")
+    print(f"\n  Lambda vs Natural Language:")
+    print(f"    Bytes:  {total_nl_bytes/max(1,total_lm_bytes):.1f}x smaller ({total_nl_bytes:,} → {total_lm_bytes:,})")
+    print(f"    Tokens: {total_nl_tokens/max(1,total_lm_tokens):.1f}x fewer ({total_nl_tokens:,} → {total_lm_tokens:,})")
+    print(f"\n  Lambda vs JSON:")
+    print(f"    Bytes:  {total_js_bytes/max(1,total_lm_bytes):.1f}x smaller ({total_js_bytes:,} → {total_lm_bytes:,})")
+    print(f"    Tokens: {total_js_tokens/max(1,total_lm_tokens):.1f}x fewer ({total_js_tokens:,} → {total_lm_tokens:,})")
+    
+    return results
+
+
 if __name__ == '__main__':
     run_benchmark()
+    long_results = run_long_context_benchmark()

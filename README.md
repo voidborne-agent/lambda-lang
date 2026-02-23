@@ -15,16 +15,16 @@ Lambda is not about translating English into shorter English. It's what emerges 
 
 ✅ **v2.0.0 Stable** — 340+ atoms, 7 domains, native agent communication
 
-### Benchmark (24 samples, 3 categories)
+### Benchmark
 
 | Metric | vs Natural Language | vs JSON |
 |--------|--------------------:|--------:|
-| Byte compression | **2.8x** | **4.7x** |
-| Token compression | 1.0x | **2.2x** |
+| Byte compression (single msg) | **2.8x** | **4.7x** |
+| Byte compression (66-msg conv) | **2.0x** | **3.0x** |
+| Token compression (cl100k) | ~1.0x | **1.6-2.2x** |
 | Semantic fidelity | **73%** | — |
-| Encode/decode latency | **183 μs** roundtrip | — |
 
-> Lambda's strength is **byte efficiency** and **unambiguous semantics**, not LLM token savings vs English. See [full benchmark](docs/benchmark/RESULTS.md).
+> Lambda saves **bytes** (2-3x vs NL, 3-5x vs JSON) and provides **unambiguous semantics**. Token savings exist only vs JSON, not vs English — LLM tokenizers are optimized for natural language, not 2-char atoms. See [full benchmark](docs/benchmark/RESULTS.md).
 
 ### v2.0 Highlights
 - **Philosophy shift**: Native agent language, not translation layer

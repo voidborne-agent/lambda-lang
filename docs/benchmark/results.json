@@ -7,8 +7,8 @@
     "compression_vs_json_bytes": 4.7,
     "compression_vs_json_tokens": 2.21,
     "semantic_fidelity": 0.733,
-    "encode_latency_us": 158.7,
-    "decode_latency_us": 24.4
+    "encode_latency_us": 158.5,
+    "decode_latency_us": 24.7
   },
   "per_category": {
     "task_dispatch": {
@@ -46,9 +46,9 @@
     }
   },
   "latency": {
-    "encode_us": 158.7,
-    "decode_us": 24.4,
-    "roundtrip_us": 183.1,
-    "json_parse_us": 1.4
+    "encode_us": 158.5,
+    "decode_us": 24.7,
+    "roundtrip_us": 183.2,
+    "json_parse_us": 1.5
   }
 }
