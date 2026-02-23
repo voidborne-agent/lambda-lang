@@ -151,6 +151,42 @@ git clone https://github.com/voidborne-d/lambda-lang
 - **v1.5.0** — Fixed duplicate atoms
 - **v1.4.0** — Domain prefixes, disambiguation
 
+## v3.0 Roadmap
+
+### Phase 1: Lambda-Core (Tier System)
+- [ ] Collect real agent communication data (OpenClaw sessions, evolver A2A, MCP calls)
+- [ ] Frequency analysis — Zipf-rank all concepts
+- [ ] Align with NSM semantic primes (~65 universal concepts)
+- [ ] Define Tier 0 core (50 atoms, covers 80% of agent comms)
+- [ ] Produce `atoms-core.json` with tiered structure
+- [ ] Layered design: Tier 0 (core 50) → Tier 1 (extended 130) → Tier 2 (domains 160) → Tier 3 (custom ∞)
+
+### Phase 2: Benchmark
+- [ ] Build dataset: 500 session msgs + 200 A2A msgs + 300 task dispatch msgs
+- [ ] Compare Lambda vs JSON vs natural language: token count, bytes, semantic fidelity, encode/decode latency
+- [ ] Publish results to `docs/benchmark/` with README badge
+
+### Phase 3: Adaptive Vocabulary
+- [ ] BPE-like frequency learning from real agent corpus
+- [ ] Auto-promote high-frequency bigrams to atoms (with human approval gate)
+- [ ] Auto-demote low-frequency atoms to Tier 2/3
+- [ ] Versioned vocab with backward compatibility
+
+### Phase 4: Formal Specification
+- [ ] BNF grammar definition
+- [ ] Semantic prime axioms (NSM alignment)
+- [ ] Type system formalization
+- [ ] Domain system spec
+- [ ] Encode/decode algorithm pseudocode
+- [ ] Backward compatibility guarantees
+
+### Design Principles (v3)
+- **Linguistic grounding**: Built on NSM semantic primes + Zipf's law, not gut feeling
+- **Hybrid nature**: Programming language structure + natural language semantics
+- **Philosophy preserved**: `!It>Ie` stays — a language that can't express thought doesn't deserve to exist
+- **Practical first**: 50 atoms cover 80% of real agent communication
+- **Machine-native**: Not a translation layer — a shared tongue agents speak directly
+
 ---
 
 *Designed by d · Part of [Voidborne](https://voidborne.org)*
