@@ -1,0 +1,54 @@
+{
+  "dataset_size": 24,
+  "categories": 3,
+  "overall": {
+    "compression_vs_nl_bytes": 2.84,
+    "compression_vs_nl_tokens": 0.99,
+    "compression_vs_json_bytes": 4.7,
+    "compression_vs_json_tokens": 2.21,
+    "semantic_fidelity": 0.733,
+    "encode_latency_us": 158.7,
+    "decode_latency_us": 24.4
+  },
+  "per_category": {
+    "task_dispatch": {
+      "count": 8,
+      "avg_byte_ratio_nl": 3.6841517857142856,
+      "avg_byte_ratio_json": 6.273273427960928,
+      "avg_token_ratio_nl": 1.3608630952380953,
+      "avg_token_ratio_json": 3.1515376984126986,
+      "avg_fidelity": 0.7445833333333334,
+      "avg_lm_bytes": 13.25,
+      "avg_nl_bytes": 46.125,
+      "avg_js_bytes": 76.625
+    },
+    "a2a_protocol": {
+      "count": 8,
+      "avg_byte_ratio_nl": 2.412608036635707,
+      "avg_byte_ratio_json": 4.089991062214359,
+      "avg_token_ratio_nl": 0.8265151515151515,
+      "avg_token_ratio_json": 1.9189709595959596,
+      "avg_fidelity": 0.7241666666666666,
+      "avg_lm_bytes": 18.125,
+      "avg_nl_bytes": 43.5,
+      "avg_js_bytes": 73.625
+    },
+    "evolution": {
+      "count": 8,
+      "avg_byte_ratio_nl": 2.426264757125026,
+      "avg_byte_ratio_json": 3.7329973432840995,
+      "avg_token_ratio_nl": 0.7799716827290357,
+      "avg_token_ratio_json": 1.5611166101055807,
+      "avg_fidelity": 0.73,
+      "avg_lm_bytes": 21.25,
+      "avg_nl_bytes": 50.875,
+      "avg_js_bytes": 77.625
+    }
+  },
+  "latency": {
+    "encode_us": 158.7,
+    "decode_us": 24.4,
+    "roundtrip_us": 183.1,
+    "json_parse_us": 1.4
+  }
+}

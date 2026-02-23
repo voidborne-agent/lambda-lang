@@ -15,6 +15,17 @@ Lambda is not about translating English into shorter English. It's what emerges 
 
 ✅ **v2.0.0 Stable** — 340+ atoms, 7 domains, native agent communication
 
+### Benchmark (24 samples, 3 categories)
+
+| Metric | vs Natural Language | vs JSON |
+|--------|--------------------:|--------:|
+| Byte compression | **2.8x** | **4.7x** |
+| Token compression | 1.0x | **2.2x** |
+| Semantic fidelity | **73%** | — |
+| Encode/decode latency | **183 μs** roundtrip | — |
+
+> Lambda's strength is **byte efficiency** and **unambiguous semantics**, not LLM token savings vs English. See [full benchmark](docs/benchmark/RESULTS.md).
+
 ### v2.0 Highlights
 - **Philosophy shift**: Native agent language, not translation layer
 - **New `a2a` domain** (39 atoms): node, heartbeat, publish, spawn, route, transport, broadcast, discover...
@@ -153,18 +164,20 @@ git clone https://github.com/voidborne-d/lambda-lang
 
 ## v3.0 Roadmap
 
-### Phase 1: Lambda-Core (Tier System)
-- [ ] Collect real agent communication data (OpenClaw sessions, evolver A2A, MCP calls)
-- [ ] Frequency analysis — Zipf-rank all concepts
-- [ ] Align with NSM semantic primes (~65 universal concepts)
-- [ ] Define Tier 0 core (50 atoms, covers 80% of agent comms)
-- [ ] Produce `atoms-core.json` with tiered structure
-- [ ] Layered design: Tier 0 (core 50) → Tier 1 (extended 130) → Tier 2 (domains 160) → Tier 3 (custom ∞)
+### Phase 1: Lambda-Core (Tier System) ✅
+- [x] Collect real agent communication data (1242 messages from 5 OpenClaw agents)
+- [x] Frequency analysis — Zipf-rank 28,736 concept tokens
+- [x] Align with NSM semantic primes (~65 universal concepts)
+- [x] Define Tier 0 core (58 atoms, covers **97.4%** of practical agent comms)
+- [x] Produce `atoms-core.json` with tiered structure
+- [x] Layered design: Tier 0 (58) → Tier 1 (+176) → Tier 2 (+164 domains) → Tier 3 (custom)
 
-### Phase 2: Benchmark
-- [ ] Build dataset: 500 session msgs + 200 A2A msgs + 300 task dispatch msgs
-- [ ] Compare Lambda vs JSON vs natural language: token count, bytes, semantic fidelity, encode/decode latency
-- [ ] Publish results to `docs/benchmark/` with README badge
+### Phase 2: Benchmark ✅
+- [x] Build dataset: 24 samples across 3 categories (task dispatch, A2A, evolution)
+- [x] Compare Lambda vs JSON vs natural language: bytes, tokens (tiktoken), fidelity, latency
+- [x] Publish results to `docs/benchmark/RESULTS.md` with README summary
+- [ ] Expand dataset to 200+ samples with real session data
+- [ ] Add multi-message conversation benchmarks (context accumulation)
 
 ### Phase 3: Adaptive Vocabulary
 - [ ] BPE-like frequency learning from real agent corpus
