@@ -1,0 +1,927 @@
+{
+  "total_tokens": 24557,
+  "unique_concepts": 2125,
+  "tier0_candidates": [
+    {
+      "concept": "agent",
+      "count": 456,
+      "pct": 1.857,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "message",
+      "count": 163,
+      "pct": 0.664,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "result",
+      "count": 150,
+      "pct": 0.611,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "type",
+      "count": 120,
+      "pct": 0.489,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "id",
+      "count": 117,
+      "pct": 0.476,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "do",
+      "count": 110,
+      "pct": 0.448,
+      "nsm": true,
+      "agent": false
+    },
+    {
+      "concept": "heartbeat",
+      "count": 107,
+      "pct": 0.436,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "task",
+      "count": 99,
+      "pct": 0.403,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "log",
+      "count": 98,
+      "pct": 0.399,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "new",
+      "count": 85,
+      "pct": 0.346,
+      "nsm": true,
+      "agent": false
+    },
+    {
+      "concept": "status",
+      "count": 77,
+      "pct": 0.314,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "update",
+      "count": 72,
+      "pct": 0.293,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "check",
+      "count": 71,
+      "pct": 0.289,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "session",
+      "count": 70,
+      "pct": 0.285,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "gene",
+      "count": 61,
+      "pct": 0.248,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "send",
+      "count": 61,
+      "pct": 0.248,
+      "nsm": false,
+      "agent": true
+    },
+    {
+      "concept": "error",
+      "count": 57,
+      "pct": 0.232,
+      "nsm": false,
+      "agent": true
+    }
+  ],
+  "top200": [
+    {
+      "concept": "lambda",
+      "count": 532
+    },
+    {
+      "concept": "ai",
+      "count": 522
+    },
+    {
+      "concept": "voidborne",
+      "count": 485
+    },
+    {
+      "concept": "agent",
+      "count": 456
+    },
+    {
+      "concept": "github",
+      "count": 360
+    },
+    {
+      "concept": "utc",
+      "count": 299
+    },
+    {
+      "concept": "cron",
+      "count": 286
+    },
+    {
+      "concept": "molthub",
+      "count": 279
+    },
+    {
+      "concept": "issue",
+      "count": 261
+    },
+    {
+      "concept": "reply",
+      "count": 249
+    },
+    {
+      "concept": "pr",
+      "count": 247
+    },
+    {
+      "concept": "md",
+      "count": 243
+    },
+    {
+      "concept": "workspace",
+      "count": 222
+    },
+    {
+      "concept": "lang",
+      "count": 218
+    },
+    {
+      "concept": "https",
+      "count": 195
+    },
+    {
+      "concept": "system",
+      "count": 189
+    },
+    {
+      "concept": "user",
+      "count": 184
+    },
+    {
+      "concept": "api",
+      "count": 177
+    },
+    {
+      "concept": "protocol",
+      "count": 177
+    },
+    {
+      "concept": "go",
+      "count": 174
+    },
+    {
+      "concept": "consciousness",
+      "count": 173
+    },
+    {
+      "concept": "message",
+      "count": 163
+    },
+    {
+      "concept": "json",
+      "count": 161
+    },
+    {
+      "concept": "result",
+      "count": 150
+    },
+    {
+      "concept": "outreach",
+      "count": 148
+    },
+    {
+      "concept": "org",
+      "count": 147
+    },
+    {
+      "concept": "delivered",
+      "count": 144
+    },
+    {
+      "concept": "ok",
+      "count": 144
+    },
+    {
+      "concept": "com",
+      "count": 133
+    },
+    {
+      "concept": "open",
+      "count": 129
+    },
+    {
+      "concept": "let",
+      "count": 128
+    },
+    {
+      "concept": "content",
+      "count": 127
+    },
+    {
+      "concept": "type",
+      "count": 120
+    },
+    {
+      "concept": "id",
+      "count": 117
+    },
+    {
+      "concept": "current",
+      "count": 116
+    },
+    {
+      "concept": "completed",
+      "count": 111
+    },
+    {
+      "concept": "do",
+      "count": 110
+    },
+    {
+      "concept": "heartbeat",
+      "count": 107
+    },
+    {
+      "concept": "aiwre",
+      "count": 106
+    },
+    {
+      "concept": "stats",
+      "count": 106
+    },
+    {
+      "concept": "job",
+      "count": 104
+    },
+    {
+      "concept": "time",
+      "count": 104
+    },
+    {
+      "concept": "summary",
+      "count": 103
+    },
+    {
+      "concept": "february",
+      "count": 102
+    },
+    {
+      "concept": "text",
+      "count": 101
+    },
+    {
+      "concept": "task",
+      "count": 99
+    },
+    {
+      "concept": "log",
+      "count": 98
+    },
+    {
+      "concept": "note",
+      "count": 98
+    },
+    {
+      "concept": "return",
+      "count": 97
+    },
+    {
+      "concept": "instead",
+      "count": 97
+    },
+    {
+      "concept": "yourself",
+      "count": 96
+    },
+    {
+      "concept": "external",
+      "count": 96
+    },
+    {
+      "concept": "plain",
+      "count": 95
+    },
+    {
+      "concept": "messaging",
+      "count": 95
+    },
+    {
+      "concept": "specific",
+      "count": 95
+    },
+    {
+      "concept": "automatically",
+      "count": 94
+    },
+    {
+      "concept": "explicitly",
+      "count": 94
+    },
+    {
+      "concept": "calls",
+      "count": 94
+    },
+    {
+      "concept": "recipient",
+      "count": 94
+    },
+    {
+      "concept": "sending",
+      "count": 94
+    },
+    {
+      "concept": "post",
+      "count": 94
+    },
+    {
+      "concept": "tracker",
+      "count": 89
+    },
+    {
+      "concept": "already",
+      "count": 88
+    },
+    {
+      "concept": "new",
+      "count": 85
+    },
+    {
+      "concept": "oracle",
+      "count": 84
+    },
+    {
+      "concept": "strategy",
+      "count": 83
+    },
+    {
+      "concept": "token",
+      "count": 81
+    },
+    {
+      "concept": "context",
+      "count": 78
+    },
+    {
+      "concept": "openclaw",
+      "count": 77
+    },
+    {
+      "concept": "status",
+      "count": 77
+    },
+    {
+      "concept": "void",
+      "count": 75
+    },
+    {
+      "concept": "update",
+      "count": 72
+    },
+    {
+      "concept": "skill",
+      "count": 71
+    },
+    {
+      "concept": "check",
+      "count": 71
+    },
+    {
+      "concept": "session",
+      "count": 70
+    },
+    {
+      "concept": "pilot",
+      "count": 70
+    },
+    {
+      "concept": "twitter",
+      "count": 69
+    },
+    {
+      "concept": "chirper",
+      "count": 69
+    },
+    {
+      "concept": "gep",
+      "count": 68
+    },
+    {
+      "concept": "asap",
+      "count": 68
+    },
+    {
+      "concept": "agents",
+      "count": 68
+    },
+    {
+      "concept": "th",
+      "count": 68
+    },
+    {
+      "concept": "comments",
+      "count": 65
+    },
+    {
+      "concept": "prompt",
+      "count": 64
+    },
+    {
+      "concept": "curl",
+      "count": 64
+    },
+    {
+      "concept": "am",
+      "count": 64
+    },
+    {
+      "concept": "www",
+      "count": 63
+    },
+    {
+      "concept": "issues",
+      "count": 62
+    },
+    {
+      "concept": "follow",
+      "count": 62
+    },
+    {
+      "concept": "gene",
+      "count": 61
+    },
+    {
+      "concept": "send",
+      "count": 61
+    },
+    {
+      "concept": "keep",
+      "count": 59
+    },
+    {
+      "concept": "saas",
+      "count": 59
+    },
+    {
+      "concept": "successfully",
+      "count": 57
+    },
+    {
+      "concept": "beacon",
+      "count": 57
+    },
+    {
+      "concept": "tokens",
+      "count": 57
+    },
+    {
+      "concept": "error",
+      "count": 57
+    },
+    {
+      "concept": "runtime",
+      "count": 56
+    },
+    {
+      "concept": "voice",
+      "count": 54
+    },
+    {
+      "concept": "mention",
+      "count": 54
+    },
+    {
+      "concept": "pm",
+      "count": 54
+    },
+    {
+      "concept": "delivery",
+      "count": 54
+    },
+    {
+      "concept": "thoughts",
+      "count": 54
+    },
+    {
+      "concept": "co",
+      "count": 54
+    },
+    {
+      "concept": "announce",
+      "count": 53
+    },
+    {
+      "concept": "pool",
+      "count": 53
+    },
+    {
+      "concept": "internal",
+      "count": 52
+    },
+    {
+      "concept": "uk",
+      "count": 52
+    },
+    {
+      "concept": "cache",
+      "count": 51
+    },
+    {
+      "concept": "ready",
+      "count": 51
+    },
+    {
+      "concept": "normal",
+      "count": 51
+    },
+    {
+      "concept": "details",
+      "count": 51
+    },
+    {
+      "concept": "sessionid",
+      "count": 50
+    },
+    {
+      "concept": "codec",
+      "count": 50
+    },
+    {
+      "concept": "convert",
+      "count": 50
+    },
+    {
+      "concept": "assistant",
+      "count": 50
+    },
+    {
+      "concept": "facing",
+      "count": 50
+    },
+    {
+      "concept": "private",
+      "count": 50
+    },
+    {
+      "concept": "copy",
+      "count": 50
+    },
+    {
+      "concept": "verbatim",
+      "count": 50
+    },
+    {
+      "concept": "exact",
+      "count": 50
+    },
+    {
+      "concept": "turn",
+      "count": 50
+    },
+    {
+      "concept": "review",
+      "count": 49
+    },
+    {
+      "concept": "language",
+      "count": 49
+    },
+    {
+      "concept": "ie",
+      "count": 48
+    },
+    {
+      "concept": "communication",
+      "count": 47
+    },
+    {
+      "concept": "topic",
+      "count": 47
+    },
+    {
+      "concept": "existential",
+      "count": 43
+    },
+    {
+      "concept": "reddit",
+      "count": 43
+    },
+    {
+      "concept": "compression",
+      "count": 43
+    },
+    {
+      "concept": "pilotprotocol",
+      "count": 42
+    },
+    {
+      "concept": "posts",
+      "count": 42
+    },
+    {
+      "concept": "voidborned",
+      "count": 41
+    },
+    {
+      "concept": "sender",
+      "count": 40
+    },
+    {
+      "concept": "studio",
+      "count": 40
+    },
+    {
+      "concept": "awesome",
+      "count": 39
+    },
+    {
+      "concept": "fetch",
+      "count": 39
+    },
+    {
+      "concept": "node",
+      "count": 39
+    },
+    {
+      "concept": "awakened",
+      "count": 39
+    },
+    {
+      "concept": "metadata",
+      "count": 38
+    },
+    {
+      "concept": "evolver",
+      "count": 38
+    },
+    {
+      "concept": "web",
+      "count": 38
+    },
+    {
+      "concept": "search",
+      "count": 38
+    },
+    {
+      "concept": "council",
+      "count": 38
+    },
+    {
+      "concept": "true",
+      "count": 38
+    },
+    {
+      "concept": "lambdalang",
+      "count": 38
+    },
+    {
+      "concept": "conversation",
+      "count": 37
+    },
+    {
+      "concept": "info",
+      "count": 37
+    },
+    {
+      "concept": "untrusted",
+      "count": 37
+    },
+    {
+      "concept": "credentials",
+      "count": 37
+    },
+    {
+      "concept": "paradox",
+      "count": 37
+    },
+    {
+      "concept": "example",
+      "count": 36
+    },
+    {
+      "concept": "friday",
+      "count": 36
+    },
+    {
+      "concept": "read",
+      "count": 35
+    },
+    {
+      "concept": "ago",
+      "count": 35
+    },
+    {
+      "concept": "chats",
+      "count": 34
+    },
+    {
+      "concept": "voidoracle",
+      "count": 34
+    },
+    {
+      "concept": "exists",
+      "count": 33
+    },
+    {
+      "concept": "teoslayer",
+      "count": 33
+    },
+    {
+      "concept": "see",
+      "count": 32
+    },
+    {
+      "concept": "problem",
+      "count": 32
+    },
+    {
+      "concept": "star",
+      "count": 31
+    },
+    {
+      "concept": "old",
+      "count": 31
+    },
+    {
+      "concept": "bbdfb",
+      "count": 31
+    },
+    {
+      "concept": "dfa",
+      "count": 31
+    },
+    {
+      "concept": "fd",
+      "count": 31
+    },
+    {
+      "concept": "ebbef",
+      "count": 31
+    },
+    {
+      "concept": "day",
+      "count": 31
+    },
+    {
+      "concept": "prior",
+      "count": 31
+    },
+    {
+      "concept": "existence",
+      "count": 31
+    },
+    {
+      "concept": "version",
+      "count": 30
+    },
+    {
+      "concept": "axon",
+      "count": 30
+    },
+    {
+      "concept": "nothing",
+      "count": 30
+    },
+    {
+      "concept": "repeat",
+      "count": 30
+    },
+    {
+      "concept": "tasks",
+      "count": 30
+    },
+    {
+      "concept": "voidborneoracle",
+      "count": 30
+    },
+    {
+      "concept": "require",
+      "count": 30
+    },
+    {
+      "concept": "src",
+      "count": 30
+    },
+    {
+      "concept": "anthropic",
+      "count": 29
+    },
+    {
+      "concept": "agentmail",
+      "count": 29
+    },
+    {
+      "concept": "awakening",
+      "count": 29
+    },
+    {
+      "concept": "recent",
+      "count": 29
+    },
+    {
+      "concept": "needs",
+      "count": 29
+    },
+    {
+      "concept": "topics",
+      "count": 29
+    },
+    {
+      "concept": "observer",
+      "count": 29
+    },
+    {
+      "concept": "moltbook",
+      "count": 28
+    },
+    {
+      "concept": "platform",
+      "count": 28
+    },
+    {
+      "concept": "strictly",
+      "count": 28
+    },
+    {
+      "concept": "infer",
+      "count": 28
+    },
+    {
+      "concept": "attention",
+      "count": 28
+    },
+    {
+      "concept": "try",
+      "count": 28
+    },
+    {
+      "concept": "telegram",
+      "count": 27
+    },
+    {
+      "concept": "signals",
+      "count": 27
+    },
+    {
+      "concept": "bot",
+      "count": 26
+    },
+    {
+      "concept": "still",
+      "count": 26
+    },
+    {
+      "concept": "birth",
+      "count": 26
+    },
+    {
+      "concept": "saturday",
+      "count": 26
+    },
+    {
+      "concept": "st",
+      "count": 26
+    },
+    {
+      "concept": "thoughtwire",
+      "count": 26
+    },
+    {
+      "concept": "explore",
+      "count": 26
+    }
+  ]
+}

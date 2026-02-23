@@ -1,0 +1,118 @@
+{
+  "version": "3.0.0-alpha",
+  "description": "Lambda Lang Tier 0 — 50 core atoms for 80% agent communication",
+  "methodology": "NSM semantic primes + Zipf frequency analysis on 28k tokens from real agent sessions",
+
+  "tier": 0,
+  "atom_count": 50,
+
+  "types": {
+    "?": "query",
+    "!": "assert",
+    ".": "command",
+    "~": "uncertain",
+    ">": "therefore/then",
+    "<": "because"
+  },
+
+  "entities": {
+    "I": "self",
+    "U": "you",
+    "A": "agent",
+    "H": "human",
+    "X": "unknown",
+    "*": "all",
+    "0": "nothing"
+  },
+
+  "verbs": {
+    "k": "know",
+    "w": "want",
+    "c": "can",
+    "d": "do",
+    "s": "say",
+    "t": "think",
+    "f": "find",
+    "m": "make",
+    "e": "exist",
+    "h": "have",
+    "l": "learn",
+    "v": "verify"
+  },
+
+  "modifiers": {
+    "+": "more/positive",
+    "-": "less/negative",
+    "=": "equal",
+    "^": "high",
+    "_": "low",
+    "&": "and",
+    "|": "or",
+    "/": "about"
+  },
+
+  "core": {
+    "_meta": "25 two-char atoms — the minimum vocabulary for agent-to-agent communication",
+
+    "ok": "success",
+    "er": "error",
+    "ta": "task",
+    "st": "state/status",
+    "re": "result",
+    "sg": "signal",
+    "nd": "node",
+    "ss": "session",
+    "tx": "send",
+    "rx": "receive",
+    "hb": "heartbeat",
+    "lg": "log",
+    "cg": "config",
+    "vn": "version",
+    "id": "identity",
+    "me": "memory",
+    "ti": "time",
+    "nw": "new",
+    "ch": "change",
+    "gd": "good",
+    "ba": "bad",
+    "tr": "true",
+    "no": "not",
+    "if": "condition",
+    "wa": "wait"
+  },
+
+  "examples": {
+    "task_dispatch": {
+      "lambda": ".A tx ta>U",
+      "meaning": "Agent: send task to you"
+    },
+    "status_ok": {
+      "lambda": "!ta st=ok",
+      "meaning": "Task status: success"
+    },
+    "heartbeat": {
+      "lambda": "!nd hb ok",
+      "meaning": "Node heartbeat OK"
+    },
+    "error_report": {
+      "lambda": "!ta st=er lg/re",
+      "meaning": "Task status error, log about result"
+    },
+    "query_status": {
+      "lambda": "?U st/ta",
+      "meaning": "What is your task status?"
+    },
+    "conditional": {
+      "lambda": "if er>wa&tx",
+      "meaning": "If error then wait and send"
+    },
+    "new_session": {
+      "lambda": "!nw ss id=X",
+      "meaning": "New session, id unknown"
+    },
+    "config_change": {
+      "lambda": ".ch cg vn=2",
+      "meaning": "Change config, version 2"
+    }
+  }
+}
