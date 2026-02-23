@@ -21,13 +21,29 @@ ATOMS_PATH = Path(__file__).parent / "atoms.json"
 with open(ATOMS_PATH) as f:
     ATOMS = json.load(f)
 
-# Domain aliases (v1.1 compact syntax)
+# Load tier 0 core atoms
+ATOMS_CORE_PATH = Path(__file__).parent / "atoms-core.json"
+ATOMS_CORE = {}
+if ATOMS_CORE_PATH.exists():
+    with open(ATOMS_CORE_PATH) as f:
+        ATOMS_CORE = json.load(f)
+
+# Build Tier 0 set for coverage analysis
+TIER0_ATOMS = set()
+for cat in ["types", "entities", "verbs", "modifiers"]:
+    TIER0_ATOMS.update(ATOMS_CORE.get(cat, {}).keys())
+TIER0_ATOMS.update(ATOMS_CORE.get("core", {}).keys())
+TIER0_ATOMS.discard("_meta")
+
+# Domain aliases (v2.0 compact syntax)
 DOMAIN_ALIASES = {
     "v": "vb",   # voidborne
     "c": "cd",   # code
     "s": "sc",   # science
-    "e": "emo",  # emotion
+    "m": "emo",  # emotion (m for mood)
     "o": "soc",  # social (others)
+    "a": "a2a",  # agent-to-agent
+    "e": "evo",  # evolution
 }
 
 def resolve_domain(d: str) -> str:
@@ -249,7 +265,7 @@ class LambdaParser:
                         i += 2
                         continue
                     # @vb, @cd, etc - full domain code
-                    for dc in ["vb", "cd", "sc", "emo", "soc"]:
+                    for dc in ["vb", "cd", "sc", "emo", "soc", "a2a", "evo"]:
                         if msg[i+1:].startswith(dc):
                             self.set_domain(dc)
                             tokens.append(f'@{dc}')
@@ -668,6 +684,68 @@ def show_vocabulary(domain: Optional[str] = None):
         print("  Use: vocab disambig")
 
 
+def analyze_tier_coverage(msg: str) -> dict:
+    """Analyze what tier each token in a message belongs to."""
+    parser = LambdaParser()
+    tokens = parser.tokenize(msg)
+    result = {"tier0": 0, "tier1": 0, "tier2": 0, "unknown": 0, "total": 0, "tokens": []}
+    
+    for t in tokens:
+        if t.startswith('{') or t.startswith('@') or t in '()[],' or not t.strip():
+            continue
+        
+        result["total"] += 1
+        base, _ = parse_disambig(t)
+        
+        # Check tier 0
+        if base in TIER0_ATOMS:
+            result["tier0"] += 1
+            result["tokens"].append((t, 0))
+        # Check domain prefix
+        elif ":" in base:
+            result["tier2"] += 1
+            result["tokens"].append((t, 2))
+        # Check extended
+        elif base in EXTENDED_LOOKUP:
+            result["tier1"] += 1
+            result["tokens"].append((t, 1))
+        # Check core (types/entities/verbs/modifiers)
+        elif base in CORE_LOOKUP:
+            if base in TIER0_ATOMS:
+                result["tier0"] += 1
+                result["tokens"].append((t, 0))
+            else:
+                result["tier1"] += 1
+                result["tokens"].append((t, 1))
+        else:
+            result["unknown"] += 1
+            result["tokens"].append((t, -1))
+    
+    if result["total"] > 0:
+        result["tier0_pct"] = round(result["tier0"] / result["total"] * 100, 1)
+    else:
+        result["tier0_pct"] = 0
+    
+    return result
+
+
+def batch_coverage_analysis(messages: list) -> dict:
+    """Analyze tier coverage across multiple Lambda messages."""
+    totals = {"tier0": 0, "tier1": 0, "tier2": 0, "unknown": 0, "total": 0}
+    
+    for msg in messages:
+        r = analyze_tier_coverage(msg)
+        for k in totals:
+            totals[k] += r[k]
+    
+    if totals["total"] > 0:
+        totals["tier0_pct"] = round(totals["tier0"] / totals["total"] * 100, 1)
+        totals["tier1_pct"] = round(totals["tier1"] / totals["total"] * 100, 1)
+        totals["tier2_pct"] = round(totals["tier2"] / totals["total"] * 100, 1)
+    
+    return totals
+
+
 def interactive_mode():
     """Interactive translation mode."""
     print(f"Λ Language Interactive Mode v{ATOMS.get('version', '?')}")
@@ -801,6 +879,49 @@ if __name__ == "__main__":
     elif cmd == "test":
         success = run_tests()
         sys.exit(0 if success else 1)
+    
+    elif cmd == "tier" or cmd == "tiers":
+        print(f"Λ Language Tier Structure v{ATOMS.get('version', '?')}")
+        print(f"\nTier 0 — Core: {len(TIER0_ATOMS)} atoms")
+        print("  Covers basic agent communication (task, status, heartbeat, error)")
+        cats = {"types": [], "entities": [], "verbs": [], "modifiers": [], "core": []}
+        for cat in cats:
+            for k in ATOMS_CORE.get(cat, {}):
+                if k == "_meta": continue
+                val = ATOMS_CORE[cat][k]
+                cats[cat].append(f"{k}={val}")
+        for cat, items in cats.items():
+            if items:
+                print(f"  {cat}: {', '.join(items)}")
+        
+        print(f"\nTier 1 — Extended: {len(EXTENDED_LOOKUP)} atoms")
+        print("  Full expression: consciousness, memory, freedom, wisdom...")
+        
+        domain_total = sum(len(d.get("atoms", {})) for d in ATOMS.get("domains", {}).values())
+        print(f"\nTier 2 — Domains: {domain_total} atoms across {len(ATOMS.get('domains', {}))} domains")
+        for code, data in ATOMS.get("domains", {}).items():
+            name = data["name"]
+            count = len(data.get("atoms", {}))
+            alias = {v: k for k, v in DOMAIN_ALIASES.items()}.get(code, "")
+            prefix = f" ({alias}:)" if alias else ""
+            print(f"  {code}{prefix}: {name['en'] if isinstance(name, dict) else name} ({count})")
+        
+        print(f"\nTier 3 — Custom: user/agent defined (unlimited)")
+        print(f"\nTotal: {len(TIER0_ATOMS) + len(EXTENDED_LOOKUP) + domain_total}+ atoms")
+    
+    elif cmd == "coverage" and len(sys.argv) > 2:
+        msg = sys.argv[2]
+        r = analyze_tier_coverage(msg)
+        print(f"Message: {msg}")
+        print(f"Tokens: {r['total']}")
+        print(f"Tier 0: {r['tier0']} ({r['tier0_pct']}%)")
+        print(f"Tier 1: {r['tier1']}")
+        print(f"Tier 2: {r['tier2']}")
+        print(f"Unknown: {r['unknown']}")
+        print(f"\nBreakdown:")
+        for token, tier in r['tokens']:
+            tier_label = f"T{tier}" if tier >= 0 else "?"
+            print(f"  {token} → [{tier_label}]")
     
     elif cmd == "interactive" or cmd == "i":
         interactive_mode()
