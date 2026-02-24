@@ -6,9 +6,9 @@
     "compression_vs_nl_bytes": 2.99,
     "compression_vs_json_chars": 4.65,
     "compression_vs_json_bytes": 4.65,
-    "semantic_fidelity": 0.276,
-    "encode_latency_us": 161.9,
-    "decode_latency_us": 23.8
+    "semantic_fidelity": 0.304,
+    "encode_latency_us": 162.6,
+    "decode_latency_us": 24.2
   },
   "per_category": {
     "task_dispatch": {
@@ -17,7 +17,7 @@
       "avg_char_ratio_json": 5.2596642691967626,
       "avg_byte_ratio_nl": 3.2387409801368685,
       "avg_byte_ratio_json": 5.2596642691967626,
-      "avg_fidelity": 0.3816666666666667,
+      "avg_fidelity": 0.4462820512820513,
       "avg_lm_chars": 13.5,
       "avg_nl_chars": 40.57692307692308,
       "avg_js_chars": 65.23076923076923
@@ -28,7 +28,7 @@
       "avg_char_ratio_json": 4.4163510932057015,
       "avg_byte_ratio_nl": 2.608005905310323,
       "avg_byte_ratio_json": 4.4163510932057015,
-      "avg_fidelity": 0.37025641025641026,
+      "avg_fidelity": 0.41333333333333333,
       "avg_lm_chars": 15.461538461538462,
       "avg_nl_chars": 38.57692307692308,
       "avg_js_chars": 64.84615384615384
@@ -39,7 +39,7 @@
       "avg_char_ratio_json": 4.15238625722443,
       "avg_byte_ratio_nl": 2.6333705200212623,
       "avg_byte_ratio_json": 4.15238625722443,
-      "avg_fidelity": 0.39384615384615385,
+      "avg_fidelity": 0.39897435897435896,
       "avg_lm_chars": 16.923076923076923,
       "avg_nl_chars": 42.61538461538461,
       "avg_js_chars": 66.6923076923077
@@ -50,7 +50,7 @@
       "avg_char_ratio_json": 4.707800115294459,
       "avg_byte_ratio_nl": 3.1780867322722526,
       "avg_byte_ratio_json": 4.707800115294459,
-      "avg_fidelity": 0.22794871794871796,
+      "avg_fidelity": 0.2520512820512821,
       "avg_lm_chars": 13.307692307692308,
       "avg_nl_chars": 39.84615384615385,
       "avg_js_chars": 59.03846153846154
@@ -61,7 +61,7 @@
       "avg_char_ratio_json": 5.297499069557893,
       "avg_byte_ratio_nl": 3.182018917482718,
       "avg_byte_ratio_json": 5.297499069557893,
-      "avg_fidelity": 0.34294871794871795,
+      "avg_fidelity": 0.37115384615384617,
       "avg_lm_chars": 12.423076923076923,
       "avg_nl_chars": 36.65384615384615,
       "avg_js_chars": 60.57692307692308
@@ -72,7 +72,7 @@
       "avg_char_ratio_json": 4.616884077461001,
       "avg_byte_ratio_nl": 3.097768630941708,
       "avg_byte_ratio_json": 4.616884077461001,
-      "avg_fidelity": 0.08333333333333333,
+      "avg_fidelity": 0.10333333333333333,
       "avg_lm_chars": 13.576923076923077,
       "avg_nl_chars": 40.61538461538461,
       "avg_js_chars": 60.34615384615385
@@ -83,7 +83,7 @@
       "avg_char_ratio_json": 4.639263445532795,
       "avg_byte_ratio_nl": 3.203505747778194,
       "avg_byte_ratio_json": 4.639263445532795,
-      "avg_fidelity": 0.16238095238095238,
+      "avg_fidelity": 0.19007326007326006,
       "avg_lm_chars": 13.692307692307692,
       "avg_nl_chars": 41.34615384615385,
       "avg_js_chars": 59.96153846153846
@@ -94,16 +94,16 @@
       "avg_char_ratio_json": 4.089935391133011,
       "avg_byte_ratio_nl": 2.754940124579117,
       "avg_byte_ratio_json": 4.089935391133011,
-      "avg_fidelity": 0.2428205128205128,
+      "avg_fidelity": 0.25923076923076926,
       "avg_lm_chars": 14.846153846153847,
       "avg_nl_chars": 39.26923076923077,
       "avg_js_chars": 58.07692307692308
     }
   },
   "latency": {
-    "encode_us": 161.9,
-    "decode_us": 23.8,
-    "roundtrip_us": 185.7,
-    "json_parse_us": 1.6
+    "encode_us": 162.6,
+    "decode_us": 24.2,
+    "roundtrip_us": 186.8,
+    "json_parse_us": 2.1
   }
 }

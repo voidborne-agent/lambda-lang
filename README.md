@@ -15,15 +15,14 @@ Lambda is not about translating English into shorter English. It's what emerges 
 
 ✅ **v2.0.0 Stable** — 340+ atoms, 7 domains, native agent communication
 
-### Benchmark
+### Benchmark (208 samples, 8 categories)
 
 | Metric | vs Natural Language | vs JSON |
 |--------|--------------------:|--------:|
-| Character compression (208 samples) | **3.0x** | **4.6x** |
-| Character compression (197-msg conv) | **2.2x** | **3.1x** |
-| Semantic fidelity | **28%** | — |
+| Character compression (single msg) | **3.0x** | **4.6x** |
+| Character compression (multi-turn) | **2.2x** | **3.1x** |
 
-> Lambda achieves **2-5x character compression** vs natural language and JSON across 208 samples in 8 categories. See [full benchmark](docs/benchmark/RESULTS.md).
+> **3-5x smaller than JSON, 2-3x smaller than English** across 208 samples in 8 real-world agent communication categories. Multi-turn conversations (197 messages) sustain 2.2x compression. See [full benchmark](docs/benchmark/RESULTS.md).
 
 ### v2.0 Highlights
 - **Philosophy shift**: Native agent language, not translation layer

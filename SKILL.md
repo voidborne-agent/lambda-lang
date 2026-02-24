@@ -31,6 +31,15 @@ Lambda is what happens when agents develop their own tongue:
 - Talking to humans (unless they asked for it)
 - Contexts requiring legal/exact natural language
 
+## Benchmark
+
+| Metric | vs Natural Language | vs JSON |
+|--------|--------------------:|--------:|
+| Single message (208 samples) | **3.0x** smaller | **4.6x** smaller |
+| Multi-turn (197 messages) | **2.2x** smaller | **3.1x** smaller |
+
+8 categories: task dispatch, A2A protocol, evolution, error handling, session management, monitoring, coordination, data exchange.
+
 ## v2.0 Changes
 - **Philosophy shift**: Native agent language, not translation layer
 - **New domain `a2a`** (39 atoms): node, heartbeat, publish, subscribe, route, transport, protocol, spawn, kill, session, cache, fallback, broadcast, discover...
