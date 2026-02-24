@@ -19,11 +19,11 @@ Lambda is not about translating English into shorter English. It's what emerges 
 
 | Metric | vs Natural Language | vs JSON |
 |--------|--------------------:|--------:|
-| Character compression (single msg) | **2.8x** | **4.7x** |
-| Character compression (66-msg conv) | **2.0x** | **3.0x** |
-| Semantic fidelity | **73%** | — |
+| Character compression (208 samples) | **3.0x** | **4.6x** |
+| Character compression (197-msg conv) | **2.2x** | **3.1x** |
+| Semantic fidelity | **28%** | — |
 
-> Lambda achieves **2-5x character compression** vs natural language and JSON while providing **unambiguous machine-parseable semantics**. See [full benchmark](docs/benchmark/RESULTS.md).
+> Lambda achieves **2-5x character compression** vs natural language and JSON across 208 samples in 8 categories. See [full benchmark](docs/benchmark/RESULTS.md).
 
 ### v2.0 Highlights
 - **Philosophy shift**: Native agent language, not translation layer
@@ -173,10 +173,10 @@ git clone https://github.com/voidborne-d/lambda-lang
 
 ### Phase 2: Benchmark ✅
 - [x] Build dataset: 24 samples across 3 categories (task dispatch, A2A, evolution)
-- [x] Compare Lambda vs JSON vs natural language: bytes, tokens (tiktoken), fidelity, latency
+- [x] Compare Lambda vs JSON vs natural language: characters, bytes, fidelity, latency
 - [x] Publish results to `docs/benchmark/RESULTS.md` with README summary
 - [ ] Expand dataset to 200+ samples with real session data
-- [ ] Add multi-message conversation benchmarks (context accumulation)
+- [x] Add multi-message conversation benchmarks (197 messages, 5 conversations)
 
 ### Phase 3: Adaptive Vocabulary
 - [ ] BPE-like frequency learning from real agent corpus

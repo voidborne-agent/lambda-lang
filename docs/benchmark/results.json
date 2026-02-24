@@ -1,54 +1,109 @@
 {
-  "dataset_size": 24,
-  "categories": 3,
+  "dataset_size": 208,
+  "categories": 8,
   "overall": {
-    "compression_vs_nl_bytes": 2.84,
-    "compression_vs_nl_tokens": 0.99,
-    "compression_vs_json_bytes": 4.7,
-    "compression_vs_json_tokens": 2.21,
-    "semantic_fidelity": 0.733,
-    "encode_latency_us": 158.5,
-    "decode_latency_us": 24.7
+    "compression_vs_nl_chars": 2.99,
+    "compression_vs_nl_bytes": 2.99,
+    "compression_vs_json_chars": 4.65,
+    "compression_vs_json_bytes": 4.65,
+    "semantic_fidelity": 0.276,
+    "encode_latency_us": 161.9,
+    "decode_latency_us": 23.8
   },
   "per_category": {
     "task_dispatch": {
-      "count": 8,
-      "avg_byte_ratio_nl": 3.6841517857142856,
-      "avg_byte_ratio_json": 6.273273427960928,
-      "avg_token_ratio_nl": 1.3608630952380953,
-      "avg_token_ratio_json": 3.1515376984126986,
-      "avg_fidelity": 0.7445833333333334,
-      "avg_lm_bytes": 13.25,
-      "avg_nl_bytes": 46.125,
-      "avg_js_bytes": 76.625
+      "count": 26,
+      "avg_char_ratio_nl": 3.2387409801368685,
+      "avg_char_ratio_json": 5.2596642691967626,
+      "avg_byte_ratio_nl": 3.2387409801368685,
+      "avg_byte_ratio_json": 5.2596642691967626,
+      "avg_fidelity": 0.3816666666666667,
+      "avg_lm_chars": 13.5,
+      "avg_nl_chars": 40.57692307692308,
+      "avg_js_chars": 65.23076923076923
     },
     "a2a_protocol": {
-      "count": 8,
-      "avg_byte_ratio_nl": 2.412608036635707,
-      "avg_byte_ratio_json": 4.089991062214359,
-      "avg_token_ratio_nl": 0.8265151515151515,
-      "avg_token_ratio_json": 1.9189709595959596,
-      "avg_fidelity": 0.7241666666666666,
-      "avg_lm_bytes": 18.125,
-      "avg_nl_bytes": 43.5,
-      "avg_js_bytes": 73.625
+      "count": 26,
+      "avg_char_ratio_nl": 2.608005905310323,
+      "avg_char_ratio_json": 4.4163510932057015,
+      "avg_byte_ratio_nl": 2.608005905310323,
+      "avg_byte_ratio_json": 4.4163510932057015,
+      "avg_fidelity": 0.37025641025641026,
+      "avg_lm_chars": 15.461538461538462,
+      "avg_nl_chars": 38.57692307692308,
+      "avg_js_chars": 64.84615384615384
     },
     "evolution": {
-      "count": 8,
-      "avg_byte_ratio_nl": 2.426264757125026,
-      "avg_byte_ratio_json": 3.7329973432840995,
-      "avg_token_ratio_nl": 0.7799716827290357,
-      "avg_token_ratio_json": 1.5611166101055807,
-      "avg_fidelity": 0.73,
-      "avg_lm_bytes": 21.25,
-      "avg_nl_bytes": 50.875,
-      "avg_js_bytes": 77.625
+      "count": 26,
+      "avg_char_ratio_nl": 2.6333705200212623,
+      "avg_char_ratio_json": 4.15238625722443,
+      "avg_byte_ratio_nl": 2.6333705200212623,
+      "avg_byte_ratio_json": 4.15238625722443,
+      "avg_fidelity": 0.39384615384615385,
+      "avg_lm_chars": 16.923076923076923,
+      "avg_nl_chars": 42.61538461538461,
+      "avg_js_chars": 66.6923076923077
+    },
+    "error_handling": {
+      "count": 26,
+      "avg_char_ratio_nl": 3.1780867322722526,
+      "avg_char_ratio_json": 4.707800115294459,
+      "avg_byte_ratio_nl": 3.1780867322722526,
+      "avg_byte_ratio_json": 4.707800115294459,
+      "avg_fidelity": 0.22794871794871796,
+      "avg_lm_chars": 13.307692307692308,
+      "avg_nl_chars": 39.84615384615385,
+      "avg_js_chars": 59.03846153846154
+    },
+    "session_management": {
+      "count": 26,
+      "avg_char_ratio_nl": 3.182018917482718,
+      "avg_char_ratio_json": 5.297499069557893,
+      "avg_byte_ratio_nl": 3.182018917482718,
+      "avg_byte_ratio_json": 5.297499069557893,
+      "avg_fidelity": 0.34294871794871795,
+      "avg_lm_chars": 12.423076923076923,
+      "avg_nl_chars": 36.65384615384615,
+      "avg_js_chars": 60.57692307692308
+    },
+    "monitoring": {
+      "count": 26,
+      "avg_char_ratio_nl": 3.097768630941708,
+      "avg_char_ratio_json": 4.616884077461001,
+      "avg_byte_ratio_nl": 3.097768630941708,
+      "avg_byte_ratio_json": 4.616884077461001,
+      "avg_fidelity": 0.08333333333333333,
+      "avg_lm_chars": 13.576923076923077,
+      "avg_nl_chars": 40.61538461538461,
+      "avg_js_chars": 60.34615384615385
+    },
+    "coordination": {
+      "count": 26,
+      "avg_char_ratio_nl": 3.203505747778194,
+      "avg_char_ratio_json": 4.639263445532795,
+      "avg_byte_ratio_nl": 3.203505747778194,
+      "avg_byte_ratio_json": 4.639263445532795,
+      "avg_fidelity": 0.16238095238095238,
+      "avg_lm_chars": 13.692307692307692,
+      "avg_nl_chars": 41.34615384615385,
+      "avg_js_chars": 59.96153846153846
+    },
+    "data_exchange": {
+      "count": 26,
+      "avg_char_ratio_nl": 2.754940124579117,
+      "avg_char_ratio_json": 4.089935391133011,
+      "avg_byte_ratio_nl": 2.754940124579117,
+      "avg_byte_ratio_json": 4.089935391133011,
+      "avg_fidelity": 0.2428205128205128,
+      "avg_lm_chars": 14.846153846153847,
+      "avg_nl_chars": 39.26923076923077,
+      "avg_js_chars": 58.07692307692308
     }
   },
   "latency": {
-    "encode_us": 158.5,
-    "decode_us": 24.7,
-    "roundtrip_us": 183.2,
-    "json_parse_us": 1.5
+    "encode_us": 161.9,
+    "decode_us": 23.8,
+    "roundtrip_us": 185.7,
+    "json_parse_us": 1.6
   }
 }
