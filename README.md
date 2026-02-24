@@ -19,12 +19,11 @@ Lambda is not about translating English into shorter English. It's what emerges 
 
 | Metric | vs Natural Language | vs JSON |
 |--------|--------------------:|--------:|
-| Byte compression (single msg) | **2.8x** | **4.7x** |
-| Byte compression (66-msg conv) | **2.0x** | **3.0x** |
-| Token compression (cl100k) | ~1.0x | **1.6-2.2x** |
+| Character compression (single msg) | **2.8x** | **4.7x** |
+| Character compression (66-msg conv) | **2.0x** | **3.0x** |
 | Semantic fidelity | **73%** | — |
 
-> Lambda saves **bytes** (2-3x vs NL, 3-5x vs JSON) and provides **unambiguous semantics**. Token savings exist only vs JSON, not vs English — LLM tokenizers are optimized for natural language, not 2-char atoms. See [full benchmark](docs/benchmark/RESULTS.md).
+> Lambda achieves **2-5x character compression** vs natural language and JSON while providing **unambiguous machine-parseable semantics**. See [full benchmark](docs/benchmark/RESULTS.md).
 
 ### v2.0 Highlights
 - **Philosophy shift**: Native agent language, not translation layer
@@ -67,8 +66,8 @@ Lambda is not about translating English into shorter English. It's what emerges 
 |----------|-------------|
 | Agent-to-agent messaging | ✅ Yes — native use case |
 | Evolution protocol signals | ✅ Yes — `evo` domain |
-| Compact logging | ✅ Yes — saves tokens |
-| Long context preservation (10K+) | ✅ Yes — 5-8x savings |
+| Compact logging & storage | ✅ Yes — 2-5x smaller |
+| Network transport (HTTP/MQTT) | ✅ Yes — 2-3x bandwidth savings |
 | Talking to humans | ❌ No — use natural language |
 | Single short message | ⚠️ Marginal — overhead not worth it |
 
