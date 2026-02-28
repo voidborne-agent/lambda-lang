@@ -1,5 +1,10 @@
 # Λ (Lambda) — Native Agent Language
 
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/voidborne-d/lambda-lang/releases)
+[![Atoms](https://img.shields.io/badge/atoms-340%2B-green)](docs/DICTIONARY.md)
+[![License](https://img.shields.io/github/license/voidborne-d/lambda-lang)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/voidborne-d/lambda-lang?style=social)](https://github.com/voidborne-d/lambda-lang)
+
 A compact, machine-native language designed for agents to communicate with each other directly — not a translation layer, but a shared tongue.
 
 ## Philosophy
